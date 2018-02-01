@@ -1,7 +1,7 @@
 package ru.job4j;
 
 /**
-* Конструктор, выводит строки в консоль.
+*  онструктор, выводит строки в консоль.
 * @param arg - arg.
 */
 public class Calculate {
