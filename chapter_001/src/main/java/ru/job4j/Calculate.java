@@ -6,7 +6,7 @@ package ru.job4j;
  * @author Kovtun Konstantin (kovtun.kostya@gmai.com)
  * @version $Id$
  * @since 0.1
- * Конструктор, выводит строки в консоль.
+ * В РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ, РІС‹РІРѕРґРёС‚ СЃС‚СЂРѕРєРё РІ РєРѕРЅСЃРѕР»СЊ.
  * @param arg - arg.
 */
 public class Calculate {
