@@ -7,19 +7,19 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 /**
-* Test.
-*
-* @author Kovtun Konstantin (kovtun.kostya@gmail.com)
-* @version $Id$
-* @since 0.1
-*/
+ * Test.
+ *
+ * @author Kovtun Konstantin (kovtun.kostya@gmail.com)
+ * @version $Id$
+ * @since 0.1
+ */
 public class CalculateTest {
-/**
-* Test echo.
-*/ @Test
+    /**
+     * Test echo.
+     */ @Test
     public void whenTakeNameThenTreeEchoPlusName() {
-    	String input = "Kovtun Konstantin";
-    	String expect = "Echo, echo, echo : Kovtun Konstantin"; 
+        String input = "Kovtun Konstantin";
+        String expect = "Echo, echo, echo : Kovtun Konstantin";
         Calculate calc = new Calculate();
         String result = calc.echo(input);
         assertThat(result, is(expect));
