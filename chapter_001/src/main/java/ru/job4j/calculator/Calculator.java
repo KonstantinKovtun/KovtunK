@@ -4,19 +4,19 @@ public class Calculator {
     
 	private double result;
 	
-	private static void add(double first, double second) {
+	private void add(double first, double second) {
 		this.result = first + second;
 	}
 	
-	private static void subtract(double first, double second) {
+	private void subtract(double first, double second) {
 		this.result = first - second;
 	}
 	
-	private static void div(double first, double second) {
+	private void div(double first, double second) {
 		this.result = first / second;
 	}
 	
-	private static void multiple(double first, double second) {
+	private void multiple(double first, double second) {
 		this.result = first * second;
 	}
 	
