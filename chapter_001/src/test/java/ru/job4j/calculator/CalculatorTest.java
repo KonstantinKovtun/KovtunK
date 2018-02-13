@@ -4,9 +4,18 @@ import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
-
+/**
+ * Test class Calculator.
+ *
+ * @author Kovtun Konstantin (kovtun.kostya@gmail.com)
+ * @version $Id$
+ * @since 0.1
+ */
 public class CalculatorTest {
-    @Test
+    
+    /**
+     * Test whenAddOnePlusOneThenTwo.
+     */ @Test
     public void whenAddOnePlusOneThenTwo() {
         Calculator calc = new Calculator();
         calc.add(1D, 1D);
@@ -15,7 +24,9 @@ public class CalculatorTest {
         assertThat(result, is(expected));
     }
 	
-	@Test
+    /**
+     * Test whenSubtractOneFromOneThenZero.
+     */ @Test
     public void whenSubtractOneFromOneThenZero() {
         Calculator calc = new Calculator();
         calc.subtract(1D, 1D);
@@ -24,7 +35,9 @@ public class CalculatorTest {
         assertThat(result, is(expected));
     }
 	
-	@Test
+    /**
+     * Test whenDivOneToOneThenThree.
+     */ @Test
     public void whenDivOneToOneThenThree() {
         Calculator calc = new Calculator();
         calc.div(6D, 2D);
@@ -33,7 +46,9 @@ public class CalculatorTest {
         assertThat(result, is(expected));
 	}
 	
-	@Test
+    /**
+     * Test whenMultipleOneOnOneThenTwelve.
+     */ @Test
     public void whenMultipleOneOnOneThenTwelve() {
         Calculator calc = new Calculator();
         calc.multiple(6D, 2D);
