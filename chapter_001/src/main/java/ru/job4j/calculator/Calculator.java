@@ -23,8 +23,9 @@ public class Calculator {
 	public double getResultResult(double first, double second) {
 		return this.result;
 	}
-	
+/*	
 	public static void main(String{} args) {
 	    
-	}		
+	}	
+*/	
 }
