@@ -14,4 +14,31 @@ public class CalculatorTest {
         double expected = 2D;
         assertThat(result, is(expected));
     }
+	
+	@Test
+    public void whenSubtractOneFromOneThenZero() {
+        Calculator calc = new Calculator();
+        calc.subtract(1D, 1D);
+        double result = calc.getResult();
+        double expected = 0;
+        assertThat(result, is(expected));
+    }
+	
+	@Test
+    public void whenDivOneToOneThenThree() {
+        Calculator calc = new Calculator();
+        calc.div(6D, 2D);
+        double result = calc.getResult();
+        double expected = 3D;
+        assertThat(result, is(expected));
+	}
+	
+	@Test
+    public void whenMultipleOneOnOneThenTwelve() {
+        Calculator calc = new Calculator();
+        calc.multiple(6D, 2D);
+        double result = calc.getResult();
+        double expected = 12D;
+        assertThat(result, is(expected));
+	}
 }
