@@ -2,25 +2,25 @@ package ru.job4j.calculator;
 
 public class Calculator {
     
-	private double result;
+	public double result;
 	
-	private void add(double first, double second) {
+	public void add(double first, double second) {
 		this.result = first + second;
 	}
 	
-	private void subtract(double first, double second) {
+	public void subtract(double first, double second) {
 		this.result = first - second;
 	}
 	
-	private void div(double first, double second) {
+	public void div(double first, double second) {
 		this.result = first / second;
 	}
 	
-	private void multiple(double first, double second) {
+	public void multiple(double first, double second) {
 		this.result = first * second;
 	}
 	
-	public double getResultResult(double first, double second) {
+	public double getResult() {
 		return this.result;
 	}
 /*	
