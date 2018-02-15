@@ -1,7 +1,6 @@
 package ru.job4j.calculator;
 /**
  * Class Calculator makes some mathematical operations.
- *
  * @author Kovtun Konstantin (kovtun.kostya@gmail.com)
  * @version $Id$
  * @since 0.1

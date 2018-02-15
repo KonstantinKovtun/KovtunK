@@ -1,55 +1,42 @@
-//package ru.job4j;
-
+package ru.job4j.condition;
 /**
- * Calculate.
+ * Point. Class calculates the distance between two points.
  *
  * @author Kovtun Konstantin (kovtun.kostya@gmai.com)
  * @version $Id$
  * @since 0.1
- *  Конструктор, выводит строки в консоль.
- * @param arg - arg.
 */
-
-//public class Calculate {
-    /**
-     * Main.
-     * @param args - args.
-     */
- //   public static void main(String[] args) {
- //       System.out.println("Hello world!");
- //   }
-	
-    /**
-     * Method echo.
-     * @param name Your name.
-     * @return Echo plus your name.
-     */
- //   public String echo(String name) {
-//        return "Echo, echo, echo : " + name;
-//   }
-//}
-package ru.job4j.condition;
- 
 public class Point {
+	
 	private int x;
 	private int y;
- 
+ 	
+	/**
+     * Method construct. Initializes the object by default values.
+	 * @param x, x value.
+	 * @param y - y value.
+     * @return result of the distance.
+     */
 	public  Point(int x, int y) {
 	  this.x = x;
 	  this.y = y;
 	}
-  	
+	
+	/**
+     * Method distanceTo. Calculates the distance between two points .
+     * @return result of distance.
+     */
 	public double distanceTo(Point that) {
-		// Точка А - это текущая точка. К ней мы обращаемся через оператор this.
 		Point a = this;
-		// Точка В - это входящая точка. К ней мы можем обратиться напрямую через имя переменной that.
-		// или для удоства мы создали новую переменню b и к ней присвоили переменную this.
 		Point b = that;
-		// сделаем вывод на консоль.
-		
-		return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+
+		return Math.sqrt(Math.pow(that.x - this.x, 2) + Math.pow(that.y - this.y, 2));
 	}
 	
+	/**
+     * Main.
+     * @param args - args.
+     */
 	public static void main(String[] args) {
 		Point a = new Point(0, 1);
 		Point b = new Point(2, 5);
