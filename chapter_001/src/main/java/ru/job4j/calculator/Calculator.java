@@ -10,7 +10,7 @@ public class Calculator {
     /**
 	 * A variable of mathematical operations value.
 	 */
-	public double result;
+	private double result;
 	
 	/**
 	 * add. Method summarize two values.
