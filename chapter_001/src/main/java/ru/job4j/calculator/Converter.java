@@ -57,7 +57,7 @@ public class Converter {
     public static void main(String[] args) {
         final int CURRENCY_DOLLAR = 120;
         final int CURRENCY_EURO = 140;
-        final int CURRENCY_TO_RUBLE = 5;
+        final int CURRENCY_TO_RUBLE = 7;
 
         Converter converter  = new Converter();
 
