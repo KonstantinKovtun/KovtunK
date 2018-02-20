@@ -55,11 +55,15 @@ public class Converter {
     }
 
     public static void main(String[] args) {
+        final int CURRENCY_DOLLAR = 120;
+        final int CURRENCY_EURO = 140;
+        final int CURRENCY_TO_RUBLE = 5;
+
         Converter converter  = new Converter();
 
-        converter.rubleToDollar(60);
-        converter.rubleToEuro(70);
-        converter.euroToRuble(1);
-        converter.dollarToRuble(1);
+        converter.rubleToDollar(CURRENCY_DOLLAR);
+        converter.rubleToEuro(CURRENCY_EURO);
+        converter.euroToRuble(CURRENCY_TO_RUBLE);
+        converter.dollarToRuble(CURRENCY_TO_RUBLE);
     }
 }
