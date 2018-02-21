@@ -14,17 +14,19 @@ public class Max {
      * @param second, second value.
      * @return maxValue result.
      */
-
 	public int max(int first, int second) {
-
-	    int maxValue = ((first > second) ? maxValue = first : (maxValue = second));
+	    int valMax = first;
+	    int valMin = second;
+	    int maxValue = ((first > second) ? (valMax) : (valMin));
 
 		return maxValue;
 	}
 
 	public static void main(String[] args) {
-        Max max = new Max();
+	    final int MAX_VALUE = 100;
+	    final int MIN_VALUE = 28;
+        Max maxV = new Max();
 
-        System.out.println(max.max(0, 3));
+        System.out.println(maxV.max(MAX_VALUE, MIN_VALUE));
     }
 }
