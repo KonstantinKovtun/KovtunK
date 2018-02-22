@@ -9,6 +9,8 @@ package ru.job4j.calculator;
 
 public class Converter {
 
+    public static final int EURO_COEF = 70;
+    public static final int USD_COEF = 60;
     /**
      * The value of a currency.
      */
@@ -20,8 +22,8 @@ public class Converter {
      * @return EUR.
      */
     public int rubleToEuro(int value) {
-        this.value = value;
-        return this.value / 70;
+        this.value = value / EURO_COEF;
+        return this.value;
     }
 
     /**
@@ -30,8 +32,8 @@ public class Converter {
      * @return USD
      */
     public int rubleToDollar(int value) {
-        this.value = value;
-        return this.value / 60;
+        this.value = value / USD_COEF;
+        return this.value;
     }
 
     /**
@@ -40,8 +42,8 @@ public class Converter {
      * @return EUR
      */
     public int euroToRuble(int value) {
-        this.value = value;
-        return this.value * 70;
+        this.value = value * EURO_COEF;
+        return this.value;
     }
 
     /**
@@ -50,8 +52,8 @@ public class Converter {
      * @return USD
      */
     public int dollarToRuble(int value) {
-        this.value = value;
-        return this.value * 60;
+        this.value = value * USD_COEF;
+        return this.value;
     }
 
     public static void main(String[] args) {

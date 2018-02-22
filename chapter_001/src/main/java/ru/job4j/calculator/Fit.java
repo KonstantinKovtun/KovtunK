@@ -8,6 +8,10 @@ package ru.job4j.calculator;
  */
 
 public class Fit {
+
+    public static final int MAN_COEF = 100;
+    public static final int WOMAN_COEF = 110;
+    public static final double COEF = 1.15;
     /**
      * The value of human weigth.
      */
@@ -19,8 +23,8 @@ public class Fit {
      * @return An ideal weight.
      */
     double manWeight(double height) {
-        this.height = height;
-        return  (this.height - 100) * 1.15;
+        this.height = (height - MAN_COEF) * COEF;
+        return  this.height;
     }
 
     /**
@@ -29,8 +33,8 @@ public class Fit {
      * @return An ideal weight.
      */
     double womanWeight(double height) {
-        this.height = height;
-        return  (this.height - 110) * 1.15;
+        this.height = (height - WOMAN_COEF) * COEF;
+        return  this.height;
     }
 
     public static void main(String[] args) {

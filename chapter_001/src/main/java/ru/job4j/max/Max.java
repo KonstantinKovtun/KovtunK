@@ -15,11 +15,7 @@ public class Max {
      * @return maxValue result.
      */
 	public int max(int first, int second) {
-	    int valMax = first;
-	    int valMin = second;
-	    int maxValue = ((first > second) ? (valMax) : (valMin));
-
-		return maxValue;
+		return (first > second) ? (first) : (second);
 	}
 
 	public static void main(String[] args) {
