@@ -9,7 +9,12 @@ package ru.job4j.condition;
  */
 public class Triangle {
     /**
-     * A variables which uses to create class Point.
+     * The value using in the formula of perimeter.
+     */
+    public static final int PERIMETER = 2;
+    
+    /**
+     * Variables which use to create class Point.
      */
 	private Point a;
 	private Point b;
@@ -37,7 +42,7 @@ public class Triangle {
 	 * @return Perimeter.
 	 */
 	public double period(double ab, double ac, double bc) {
-		return (ab + ac + bc) / 2;
+		return (ab + ac + bc) / PERIMETER;
 	}
 
 	/**
@@ -69,9 +74,10 @@ public class Triangle {
 	 * @return the boolean result.
 	 */
 	private boolean exist(double ab, double ac, double bc) {
-		if ((ab > 0) && (ac > 0) && (bc > 0)) {
-		    return true;
-        }
+
+		if ((ab + bc > ac) && (bc + ac > ab) && (ac + ab > bc)) {
+			return true;
+		}
 
 		return false;
 	}
