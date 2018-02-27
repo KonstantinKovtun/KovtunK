@@ -12,7 +12,7 @@ public class Triangle {
      * The value using in the formula of perimeter.
      */
     public static final int PERIMETER = 2;
-    
+
     /**
      * Variables which use to create class Point.
      */
