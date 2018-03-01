@@ -33,7 +33,7 @@ public class Factorial {
     public static void main(String[] args) {
         final int START = 5;
 
-        Factorial  factorial  = new Factorial ();
+        Factorial factorial = new Factorial();
 
         System.out.println("Factorial 5 = " + factorial.calc(START));
     }
