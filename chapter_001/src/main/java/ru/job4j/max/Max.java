@@ -26,11 +26,11 @@ public class Max {
      * @return maxValue result.
      */
 	public int max(int first, int second, int third) {
-		return (first > second) ? (first) : (second);
+		return this.max(this.max(first, second), third);
 	}
 
 	public static void main(String[] args) {
-	    final int MAX_VALUE = 100;
+	    final int MAX_VALUE = -50;
 	    final int MIN_VALUE = 28;
         final int THIRD_VALUE = 35;
 
