@@ -8,9 +8,6 @@ package ru.job4j.loop;
  */
 
 public class Counter {
-
-    public static final int SUM = 0;
-
     /**
      * Convert RUB to EUR.
      * @param start,  start value.
@@ -18,7 +15,7 @@ public class Counter {
      * @return sum.
      */
     public int add(int start, int finish) {
-        int sum = SUM;
+        int sum = 0;
 
         for (int i = start; i <= finish; i++) {
             if (i % 2 == 0) {

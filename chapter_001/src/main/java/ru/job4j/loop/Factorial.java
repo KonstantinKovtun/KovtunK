@@ -9,32 +9,24 @@ package ru.job4j.loop;
 
 public class Factorial {
 
-    public static final int RESULT = 1;
-
     /**
      * calc. The method calculates the factorial of a number.
      * @param number, the value of a number.
      * @return result.
      */
     public int calc(int number) {
-        int result = RESULT;
+        int result = 1;
 
-        for (int i = RESULT; i <= number; i++) {
-            if (number == 0 || number == 1) {
-                result = RESULT;
-            } else {
-                result *= i;
-            }
+        for (int i = 1; i <= number; i++) {
+            result *= i;
         }
 
         return result;
     }
 
     public static void main(String[] args) {
-        final int START = 5;
-
+        final int START = 0;
         Factorial factorial = new Factorial();
-
-        System.out.println("Factorial 5 = " + factorial.calc(START));
+        System.out.println("Factorial START! = " + factorial.calc(START));
     }
 }
