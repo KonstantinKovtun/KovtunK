@@ -28,12 +28,12 @@ public class FindLoopTest {
     /**
      * Test whenFindsWrongYourIndexInArray.
      */
-    /*@Test
+    @Test
     public void whenFindsWrongYourIndexInArray() {
         FindLoop findLoop = new FindLoop();
         int[] array = {11, 23, 24, 45, 0, 33, 28};
-        int result = findLoop.indexOf(array, 24);
-        int expected = 15;
+        int result = findLoop.indexOf(array, 100);
+        int expected = -1;
         assertThat(result, is(expected));
-    }*/
+    }
 }
