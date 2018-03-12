@@ -8,7 +8,6 @@ import java.util.Arrays;
  * @version $Id$
  * @since 0.1
  */
-
 public class Matrix {
     /**
      * multiple. Create a table.
@@ -18,25 +17,29 @@ public class Matrix {
     public int[][] multiple(int size) {
         int[][] array = new int[size][size];
         System.out.printf(" * |");
-        for (int i = 1; i < array.length; i++) {
-            System.out.printf("%2d|", i);
+        for (int i = 0; i < array.length; i++) {
+            System.out.printf("%2d|", i + 1);
         }
-        System.out.printf("\n---|--|--|--|--|--|--|--|--|--|\n");
-        for (int i = 1; i < array.length; i++) {
-            System.out.printf("%2d |", i);
-            for (int j = 1; j < array.length; j++) {
-                System.out.printf("%2d|", array[i][j] = i * j);
+        System.out.printf("\n---|--|--|--|--|--|--|--|--|--|--|\n");
+        for (int i = 0; i < array.length; i++) {
+            System.out.printf("%2d |", i + 1);
+            for (int j = 0; j < array.length; j++) {
+                array[i][j] = (i + 1) * (j + 1);
+                System.out.printf("%2d|", array[i][j]);
             }
-            System.out.printf("\n---|--|--|--|--|--|--|--|--|--|\n");
+            System.out.printf("\n---|--|--|--|--|--|--|--|--|--|--|\n");
         }
         return array;
-    }
-    public String toString(int[][] mass) {
-        return "";
     }
 
     public static void main(String[] args) {
         Matrix matrix = new Matrix();
-        matrix.multiple(10);
+        int[][] ara = matrix.multiple(10);
+        for (int i = 0; i < ara.length; i++) {
+            for (int j = 0; j < ara.length; j++) {
+                System.out.print(" " + ara[i][j]);
+            }
+            System.out.println();
+        }
     }
 }
