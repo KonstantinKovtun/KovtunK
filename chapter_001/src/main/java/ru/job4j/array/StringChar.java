@@ -31,8 +31,6 @@ public class StringChar {
                         count++;
                         break;
                     }
-                    //count++;
-                    //break;
                 }
             }
 
@@ -44,10 +42,9 @@ public class StringChar {
     }
 
     public static void main(String[] args) {
-        String originStroka = "Пиbвет люди, как там на Земле ?";
+        String originStroka = "Приииивет люди, как там на Земле ?";
         String subStroka = "ивет";
         StringChar stringChar = new StringChar();
         System.out.println(stringChar.contains(originStroka, subStroka));
-        //System.out.println("Array : " + Arrays.toString(stringChar.contains(originStroka, subStroka)));
     }
 }
