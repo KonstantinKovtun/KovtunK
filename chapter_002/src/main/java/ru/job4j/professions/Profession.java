@@ -1,0 +1,19 @@
+package ru.job4j.professions;
+
+public class Profession {
+    private String name;
+    private String profession;
+
+    public String getName() {
+        return this.name;
+    }
+
+    public static void main(String[] args) {
+
+        Doctor doctor = new Doctor();
+
+        System.out.println(doctor.getName());
+    }
+}
+
+
