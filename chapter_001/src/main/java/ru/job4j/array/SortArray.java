@@ -22,7 +22,6 @@ public class SortArray {
 
         return ara3;
     }
-
     public static void main(String[] args) {
         int[] ara1 = {4, -2, 0};
         int[] ara2 = {5, -1, 28, -100};

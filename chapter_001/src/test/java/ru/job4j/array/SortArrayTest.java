@@ -22,7 +22,7 @@ public class SortArrayTest {
         int[] ara1 = {4, -2, 0};
         int[] ara2 = {5, -1, 28, -100};
         int[] result = sortArray.insertElements(ara1, ara2);
-        int[] expected = {4, -2, 0, 5, -1, 28,-100};
+        int[] expected = {4, -2, 0, 5, -1, 28, -100};
         assertThat(result, is(expected));
     }
 }
