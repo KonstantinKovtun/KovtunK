@@ -5,14 +5,14 @@ public class Item {
     private String name;
     private String desc;
     private long create;
-    private String[] comments;
+    //private String[] comments;
 
-    public Item(String id, String name, String desc, long create, String[] comments) {
+    public Item(String id, String name, String desc, long create/*, String[] comments*/) {
         this.id = id;
         this.name = name;
         this.desc = desc;
         this.create = create;
-        this.comments = comments;
+        //this.comments = comments;
     }
 
     public void setId(String id) {

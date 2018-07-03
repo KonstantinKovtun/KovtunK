@@ -10,8 +10,7 @@ public class Tracker {
     /**
      * Массив для хранение заявок.
      */
-    private final Item[] items = new Item[100];
-
+    private final Item[] items = new Item[5];
     /**
      * Указатель ячейки для новой заявки.
      */
@@ -19,65 +18,53 @@ public class Tracker {
 
     private static final Random RN = new Random();
 
-    /**
-     * Метод реализаущий добавление заявки в хранилище
-     * @param item новая заявка
-     */
     public Item add(Item item) {
-        item.setId(this.generateId());
-        this.items[this.position++] = item;
+        item.setId(this.generatedId());
+        this.items[position++] = item;
         return item;
     }
 
-    /**
-     * Метод генерирует уникальный ключ для заявки.
-     * Так как у заявки нет уникальности полей, имени и описание. Для идентификации нам нужен уникальный ключ.
-     * @return Уникальный ключ.
-     */
-    private String generateId() {
+    protected Item findById(String id) {
+        Item result = null;
+        for (Item item : items) {
+            if (item != null && item.getId().equals(id)) {
+                result = item;
+                break;
+            }
+        }
+    return result;
+    }
+
+    String generatedId() {
         return String.valueOf(System.currentTimeMillis() + (RN.nextInt()));
     }
-    public void replace(String id, Item item) {
-        //Реализовать метод редактирование заявок.
-    }
-    public void update(Item item) {
-        //Реализовать метод обновления.
-    }
-    public Item[] findAll() {
-        //Реализовать метод поиска всех заявок.
-        return items;
-    }
-    public Item findById(Item id) {
-        //Реализовать метод поиска по индексу.
-        return id;
-    }
-    public Item[] findByName(String key) {
-        Item[] result = new Item[this.position];
 
-        for (int i = 0 ; i < result.length; i++) {
-            if (result[i].getName().equals(key)) {
-                result[i] = this.items[i];
+    public void replace(String id, Item item) {
+        for (int i = 0; i < items.length; i++) {
+            if (this.items[i].getId().equals(id)) {
+                this.items[i] = item;
             }
-            return result;
         }
-        //Реализовать метод получение списка по имени.
-        return items;
     }
-    public void delete(String id) {
-        //Реализовать метод удаления.
-    }
+
     public Item[] getAll() {
         Item[] result = new Item[this.position];
-        for (int index = 0; index!= this.position; index++) {
+        for (int index = 0; index != this.position; index++) {
             result[index] = this.items[index];
         }
         return result;
     }
-
+/*
     public static void main(String[] args) {
-        Tracker tracker = new Tracker();//String id, String name, String desc, long create, String[] comments
-        Item item = new Item("1", "Ann", "DescName", 28, new String[10]);
+        Tracker tracker = new Tracker();
+        tracker.add(new Item("19", "Name1", "desc1", 121));
+        tracker.add(new Item("29", "Name2", "desc2", 122));
 
-        System.out.println(item.getName() + item.getId());
+        tracker.replace("19", new Item("555", "Name555", "desc555", 555));
+
+        for (Item item : tracker.getAll()) {
+            System.out.println(item.getId() + " " + item.getName() + " " + item.getDesc());
+        }
     }
+*/
 }
