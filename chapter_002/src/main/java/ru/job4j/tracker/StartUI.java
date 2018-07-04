@@ -14,7 +14,7 @@ public class StartUI {
         tracker.add(new Item("59", "Name5", "desc5", 125));
 
         tracker.delete(("19"));
-        for (Item item : tracker.getAll()) {
+        for (Item item : tracker.findAll()) {
             System.out.println(item.getId() + " " + item.getName() + " " + item.getDesc());
         }
     }

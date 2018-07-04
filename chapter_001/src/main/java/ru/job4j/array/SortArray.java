@@ -18,8 +18,6 @@ public class SortArray {
 
         System.arraycopy(array1, 0, ara3, 0, array1.length);
         System.arraycopy(array2, 0, ara3, ara3.length / 2, array2.length);
-       // Arrays.sort(ara3);
-
         return ara3;
     }
     public static void main(String[] args) {
