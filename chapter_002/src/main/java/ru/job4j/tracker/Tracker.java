@@ -11,7 +11,7 @@ public class Tracker {
     /**
      * Массив для хранение заявок.
      */
-    private final Item[] items = new Item[3];
+    private final Item[] items = new Item[4];
     /**
      * Указатель ячейки для новой заявки.
      */
@@ -22,7 +22,7 @@ public class Tracker {
      * Метод добавленя новой заявки.
      */
     public Item add(Item item) {
-        //item.setId(this.generatedId());
+        item.setId(this.generatedId());
         this.items[position++] = item;
         return item;
     }
@@ -39,6 +39,8 @@ public class Tracker {
         for (int i = 0; i < items.length; i++) {
             if (this.items[i].getId().equals(id)) {
                 System.arraycopy(items, i + 1, items, i, items.length - 1 - i);
+                position--;
+                break;
             }
         }
     }
@@ -60,6 +62,7 @@ public class Tracker {
             }
         }
         return result;
+
     }
 
     protected Item findById(String id) {
@@ -82,6 +85,23 @@ public class Tracker {
         tracker.add(new Item("19", "Name1", "desc1", 121));
         tracker.add(new Item("29", "Name2", "desc2", 122));
         tracker.add(new Item("39", "Name3", "desc3", 123));
+        tracker.add(new Item("29", "Name2", "desc2", 122));
+
+        tracker.findByName("Name2");
+
+        Item[] res = new Item[tracker.items.length];
+
+        for (int i = 0; i < res.length; i++) {
+            if (res[i].getName().equals("Name2")) {
+                System.out.println(res[i].getName());
+            }
+        }
+
+
+        System.out.println();
+
+
+
         /*
         for (Item item : tracker.findAll()) {
             System.out.println(item.getId() + " " + item.getName() + " " + item.getDesc());
@@ -98,11 +118,12 @@ public class Tracker {
         }
         */
 
-        
-        Item[] item = tracker.findByName("Name2");
-        System.out.println(item.length);
-
-
+        /******delete()
+        tracker.delete("29");
+        for (Item item : tracker.findAll()) {
+            System.out.println(item.getId() + " " + item.getName() + " " + item.getDesc());
+        }
+        */
         //System.out.println(item[0].getId() + " " + item[0].getName() + " " + item[0].getDesc());
         //System.out.println(tracker.findByName("Name2") + " " + item.getName() + " " + item.getDesc());
     }
