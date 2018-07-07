@@ -19,10 +19,10 @@ public class SortArrayTest {
     @Test
     public void whenOneArrayPlusTwoArrayThenThirdArraySorted() {
         SortArray sortArray = new SortArray();
-        int[] ara1 = {4, -2, 0};
-        int[] ara2 = {5, -1, 28, -100};
+        int[] ara1 = {1, 2};
+        int[] ara2 = {3, 4};
         int[] result = sortArray.insertElements(ara1, ara2);
-        int[] expected = {4, -2, 0, 5, -1, 28, -100};
+        int[] expected = {1, 2, 3, 4};
         assertThat(result, is(expected));
     }
 }
