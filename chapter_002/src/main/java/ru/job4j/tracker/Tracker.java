@@ -22,15 +22,16 @@ public class Tracker {
      * Метод добавленя новой заявки.
      */
     public Item add(Item item) {
-        item.setId(this.generatedId());
+        //item.setId(this.generatedId());
         this.items[position++] = item;
         return item;
     }
 
     public void replace(String id, Item item) {
-        for (int i = 0; i < items.length; i++) {
+        for (int i = 0; i != this.position; i++) {
             if (this.items[i].getId().equals(id)) {
                 this.items[i] = item;
+                break;
             }
         }
     }
@@ -54,15 +55,16 @@ public class Tracker {
     }
 
     public Item[] findByName(String key) {
+        int count = 0;
+        int index = 0;
         Item[] result = new Item[this.position];
         for (int i = 0; i < result.length; i++) {
             if (this.items[i].getName().equals(key)) {
-                result[i] = this.items[i];
-                break;
+                result[index++] = this.items[i];
+                count++;
             }
         }
-        return result;
-
+        return Arrays.copyOf(result, index);
     }
 
     protected Item findById(String id) {
@@ -87,19 +89,11 @@ public class Tracker {
         tracker.add(new Item("39", "Name3", "desc3", 123));
         tracker.add(new Item("29", "Name2", "desc2", 122));
 
-        tracker.findByName("Name2");
+        tracker.replace("39", new Item("108", "Name3108", "desc3108", 108));
 
-        Item[] res = new Item[tracker.items.length];
-
-        for (int i = 0; i < res.length; i++) {
-            if (res[i].getName().equals("Name2")) {
-                System.out.println(res[i].getName());
-            }
+        for (Item item : tracker.findAll()) {
+            System.out.println(item.getId() + " " + item.getName() + " " + item.getDesc() + " " + item.getCreate());
         }
-
-
-        System.out.println();
-
 
 
         /*
