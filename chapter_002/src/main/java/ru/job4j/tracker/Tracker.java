@@ -22,7 +22,7 @@ public class Tracker {
      * Метод добавленя новой заявки.
      */
     public Item add(Item item) {
-        //item.setId(this.generatedId());
+        item.setId(this.generatedId());
         this.items[position++] = item;
         return item;
     }
