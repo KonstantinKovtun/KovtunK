@@ -46,7 +46,6 @@ public class TrackerTest {
 
         assertThat(tracker.findAll().length, is(4));
     }
-
     /**
      * Test whenReplaceAnItemInTracker.
      */
@@ -58,9 +57,11 @@ public class TrackerTest {
         tracker.add(new Item("39", "Name3", "desc3", 123));
         tracker.add(new Item("49", "Name4", "desc4", 124));
 
-        Item[] items = new Item[tracker.findAll().length];
-        tracker.replace("Name2", new Item("89", "Name89", "desc89", 189));
-        assertThat(tracker.findAll().length, is(4));
+        Item[] items = tracker.findAll();
+        tracker.replace("29", new Item("89", "Name89", "desc89", 189));
+        assertThat(items.length, is(4));
         assertThat(items[1].getName(), is("Name89"));
+        assertThat(items[1].getId(), is(tracker.add(new Item("29", "Name2", "desc2", 122)).getId()));
+        //assertThat(items[1].getDesc(), is("desc89"));
     }
 }

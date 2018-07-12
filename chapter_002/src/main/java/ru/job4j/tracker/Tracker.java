@@ -27,23 +27,27 @@ public class Tracker {
         return item;
     }
 
-    public void replace(String id, Item item) {
+    public boolean replace(String id, Item item) {
         for (int i = 0; i != this.position; i++) {
             if (this.items[i].getId().equals(id)) {
                 this.items[i] = item;
-                break;
+                item.setId(id);
+                return true;
             }
         }
+
+        return false;
     }
 
-    public void delete(String id) {
+    public boolean delete(String id) {
         for (int i = 0; i < items.length; i++) {
             if (this.items[i].getId().equals(id)) {
                 System.arraycopy(items, i + 1, items, i, items.length - 1 - i);
                 position--;
-                break;
+                return true;
             }
         }
+        return false;
     }
 
     public Item[] findAll() {
@@ -78,7 +82,7 @@ public class Tracker {
     return result;
     }
 
-    String generatedId() {
+    private String generatedId() {
         return String.valueOf(System.currentTimeMillis() + (RN.nextInt()));
     }
 
@@ -94,31 +98,5 @@ public class Tracker {
         for (Item item : tracker.findAll()) {
             System.out.println(item.getId() + " " + item.getName() + " " + item.getDesc() + " " + item.getCreate());
         }
-
-
-        /*
-        for (Item item : tracker.findAll()) {
-            System.out.println(item.getId() + " " + item.getName() + " " + item.getDesc());
-        }
-        */
-        /*
-        System.out.println(tracker.findById("39").getId() + " " + tracker.findById("39").getName() + " "
-         + tracker.findById("39").getDesc());
-        */
-        /*
-        Item[] item = tracker.findByName("Name2");
-        for (int i = 0; i < item.length; i++) {
-            System.out.println(item[i].getId() + " " + item[i].getName() + " " + item[i].getDesc());
-        }
-        */
-
-        /******delete()
-        tracker.delete("29");
-        for (Item item : tracker.findAll()) {
-            System.out.println(item.getId() + " " + item.getName() + " " + item.getDesc());
-        }
-        */
-        //System.out.println(item[0].getId() + " " + item[0].getName() + " " + item[0].getDesc());
-        //System.out.println(tracker.findByName("Name2") + " " + item.getName() + " " + item.getDesc());
     }
 }
