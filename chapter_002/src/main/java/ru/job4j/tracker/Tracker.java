@@ -4,12 +4,14 @@ import java.util.Arrays;
 import java.util.Random;
 
 /**
+ * Class Tracker contains an array elements of items and also makes some operation with items.
+ * @author Konstantin
  * @version $Id$
  * @since 0.1
  */
 public class Tracker {
     /**
-     * Массив для хранение заявок.
+     * An array which contains an items.
      */
     private final Item[] items = new Item[4];
     /**
@@ -19,14 +21,21 @@ public class Tracker {
 
     private static final Random RN = new Random();
     /**
-     * Метод добавленя новой заявки.
+     * A methods which adds a new item.
+     * @param item, item value.
+     * @return item, return an array of item.
      */
     public Item add(Item item) {
         item.setId(this.generatedId());
         this.items[position++] = item;
         return item;
     }
-
+    /**
+     * A methods which replace a new item with an old item.
+     * @param id, new items' id.
+     * @param item, new item.
+     * @return boolean.
+     */
     public boolean replace(String id, Item item) {
         for (int i = 0; i != this.position; i++) {
             if (this.items[i].getId().equals(id)) {
@@ -35,10 +44,13 @@ public class Tracker {
                 return true;
             }
         }
-
         return false;
     }
-
+    /**
+     * A methods which deletes items from array.
+     * @param id, new items' id.
+     * @return boolean.
+     */
     public boolean delete(String id) {
         for (int i = 0; i < items.length; i++) {
             if (this.items[i].getId().equals(id)) {
@@ -49,7 +61,10 @@ public class Tracker {
         }
         return false;
     }
-
+    /**
+     * A methods which gets all items from array.
+     * @return boolean.
+     */
     public Item[] findAll() {
         Item[] result = new Item[this.position];
         for (int index = 0; index != this.position; index++) {
@@ -57,7 +72,11 @@ public class Tracker {
         }
         return result;
     }
-
+    /**
+     * A methods which finds items by key.
+     * @param key, name of items' element.
+     * @return item, an array of founded items in array.
+     */
     public Item[] findByName(String key) {
         int count = 0;
         int index = 0;
@@ -70,7 +89,11 @@ public class Tracker {
         }
         return Arrays.copyOf(result, index);
     }
-
+    /**
+     * A methods which finds items by key.
+     * @param id, id of items' element.
+     * @return item, an array of founded items in array by id.
+     */
     protected Item findById(String id) {
         Item result = null;
         for (Item item : items) {
@@ -81,22 +104,11 @@ public class Tracker {
         }
     return result;
     }
-
+    /**
+     * A methods which generate id value.
+     * @return id, return generated id for item parameter.
+     */
     private String generatedId() {
         return String.valueOf(System.currentTimeMillis() + (RN.nextInt()));
-    }
-
-    public static void main(String[] args) {
-        Tracker tracker = new Tracker();
-        tracker.add(new Item("19", "Name1", "desc1", 121));
-        tracker.add(new Item("29", "Name2", "desc2", 122));
-        tracker.add(new Item("39", "Name3", "desc3", 123));
-        tracker.add(new Item("29", "Name2", "desc2", 122));
-
-        tracker.replace("39", new Item("108", "Name3108", "desc3108", 108));
-
-        for (Item item : tracker.findAll()) {
-            System.out.println(item.getId() + " " + item.getName() + " " + item.getDesc() + " " + item.getCreate());
-        }
     }
 }
