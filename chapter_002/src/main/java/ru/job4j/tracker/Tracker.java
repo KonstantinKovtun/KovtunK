@@ -111,4 +111,8 @@ public class Tracker {
     private String generatedId() {
         return String.valueOf(System.currentTimeMillis() + (RN.nextInt()));
     }
+
+    public static void main(String[] args) {
+        System.out.println("Hi");
+    }
 }

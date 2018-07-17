@@ -58,12 +58,12 @@ public class TrackerTest {
         tracker.add(new Item("39", "Name3", "desc3", 123));
         tracker.add(new Item("49", "Name4", "desc4", 124));
         boolean b = tracker.replace(item.getId(), new Item("89", "Name89", "desc89", 189));
-        assertTrue(b);
-        assertThat(tracker.findAll().length, is(4));
+        assertTrue(b);//// НЕ ПОНИМАЮ ДЛЯ ЧЕГО МЫ ЭТОТ МЕТОД ИСПОЛЬЗОВАЛИ. ПОТОМУ, ЧТО метод реплейс возращает тру, если
+        //удалась замена айтема, в другом случае тестирование не прошло бы. Я прав ?
+        assertThat(tracker.findAll().length, is(4)); /// ЗАЧЕМ МЫ ИСПОЛЬЗУЕМ ДАННЫЙ МЕТОД ?
         assertThat(tracker.findAll()[0].getName(), is("Name89"));
         assertThat(tracker.findAll()[0].getId(), is(item.getId()));
     }
-
     /**
      * Test whenDeleteItemInTracker.
      */
@@ -76,18 +76,11 @@ public class TrackerTest {
         tracker.add(new Item("292", "Name4", "desc4", 124));
 
         Item[] items = tracker.findAll();
-
-        for (int i = 0; i < items.length; i++) {
-
-        }
-
-
-        //assertThat(tracker.findAll().length, is(4));
-        /*
-        Item[] items = tracker.findByName("Name2");
-        assertThat(items.length, is(2));
-        assertThat(items[0].getName(), is("Name2"));
-        assertThat(items[1].getName(), is("Name2"));
-         */
+        boolean b = tracker.delete(items[0].getId());
+        assertTrue(b);
+        assertThat(tracker.findAll().length, is(3));
+        assertThat(tracker.findAll()[0].getId(), is(items[0].getId()));
+        assertThat(tracker.findAll()[1].getId(), is(items[1].getId()));
+        assertThat(tracker.findAll()[2].getId(), is(items[2].getId()));
     }
 }
