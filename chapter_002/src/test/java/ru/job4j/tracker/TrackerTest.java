@@ -58,8 +58,10 @@ public class TrackerTest {
         tracker.add(new Item("39", "Name3", "desc3", 123));
         tracker.add(new Item("49", "Name4", "desc4", 124));
         boolean b = tracker.replace(item.getId(), new Item("89", "Name89", "desc89", 189));
-        assertTrue(b);//// НЕ ПОНИМАЮ ДЛЯ ЧЕГО МЫ ЭТОТ МЕТОД ИСПОЛЬЗОВАЛИ. ПОТОМУ, ЧТО метод реплейс возращает тру, если
-        //удалась замена айтема, в другом случае тестирование не прошло бы. Я прав ?
+        assertTrue(b);
+        /** НЕ ПОНИМАЮ ДЛЯ ЧЕГО МЫ ЭТОТ МЕТОД ИСПОЛЬЗОВАЛИ. ПОТОМУ, ЧТО метод реплейс возращает тру, если
+         * удалась замена айтема, в другом случае тестирование не прошло бы. Я прав ?
+        */
         assertThat(tracker.findAll().length, is(4)); /// ЗАЧЕМ МЫ ИСПОЛЬЗУЕМ ДАННЫЙ МЕТОД ?
         assertThat(tracker.findAll()[0].getName(), is("Name89"));
         assertThat(tracker.findAll()[0].getId(), is(item.getId()));
