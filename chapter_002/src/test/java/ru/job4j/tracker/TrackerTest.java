@@ -2,6 +2,7 @@ package ru.job4j.tracker;
 
 import org.junit.Test;
 import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
@@ -59,9 +60,6 @@ public class TrackerTest {
         tracker.add(new Item("49", "Name4", "desc4", 124));
         boolean b = tracker.replace(item.getId(), new Item("89", "Name89", "desc89", 189));
         assertTrue(b);
-        /** НЕ ПОНИМАЮ ДЛЯ ЧЕГО МЫ ЭТОТ МЕТОД ИСПОЛЬЗОВАЛИ. ПОТОМУ, ЧТО метод реплейс возращает тру, если
-         * удалась замена айтема, в другом случае тестирование не прошло бы. Я прав ?
-        */
         assertThat(tracker.findAll().length, is(4)); /// ЗАЧЕМ МЫ ИСПОЛЬЗУЕМ ДАННЫЙ МЕТОД ?
         assertThat(tracker.findAll()[0].getName(), is("Name89"));
         assertThat(tracker.findAll()[0].getId(), is(item.getId()));
@@ -72,17 +70,18 @@ public class TrackerTest {
     @Test
     public void whenDeleteItemInTracker() {
         Tracker tracker = new Tracker();
-        tracker.add(new Item("19", "Name1", "desc1", 121));
+        Item items = tracker.add(new Item("19", "Name1", "desc1", 121));
+        //tracker.add(new Item("19", "Name1", "desc1", 121));
         tracker.add(new Item("29", "Name2", "desc2", 122));
         tracker.add(new Item("39", "Name3", "desc3", 123));
         tracker.add(new Item("292", "Name4", "desc4", 124));
 
-        Item[] items = tracker.findAll();
-        boolean b = tracker.delete(items[0].getId());
+        //Item[] items = tracker.findAll();
+        boolean b = tracker.delete(items.getId());
         assertTrue(b);
         assertThat(tracker.findAll().length, is(3));
-        assertThat(tracker.findAll()[0].getId(), is(items[0].getId()));
-        assertThat(tracker.findAll()[1].getId(), is(items[1].getId()));
-        assertThat(tracker.findAll()[2].getId(), is(items[2].getId()));
+        assertThat(tracker.findAll()[0].getId(), is(items.getId()));
+        //assertThat(tracker.findAll()[1].getId(), is(items[1].getId()));
+        //assertThat(tracker.findAll()[2].getId(), is(items[2].getId()));
     }
 }

@@ -59,6 +59,8 @@ public class Tracker {
                 return true;
             }
         }
+
+        System.out.println(Arrays.toString( this.items));
         return false;
     }
     /**
