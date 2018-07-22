@@ -52,27 +52,23 @@ public class Tracker {
      * @return boolean.
      */
     public boolean delete(String id) {
+        boolean referenceIdResult = false;
+
         for (int i = 0; i < items.length; i++) {
             if (this.items[i].getId().equals(id)) {
                 System.arraycopy(items, i + 1, items, i, items.length - 1 - i);
                 position--;
-                return true;
+                referenceIdResult = true;
             }
         }
-
-        System.out.println(Arrays.toString( this.items));
-        return false;
+        return referenceIdResult;
     }
     /**
      * A methods which gets all items from array.
      * @return boolean.
      */
     public Item[] findAll() {
-        Item[] result = new Item[this.position];
-        for (int index = 0; index != this.position; index++) {
-            result[index] = this.items[index];
-        }
-        return result;
+        return Arrays.copyOf(items, position);
     }
     /**
      * A methods which finds items by key.
