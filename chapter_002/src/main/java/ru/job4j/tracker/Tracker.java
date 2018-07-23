@@ -13,7 +13,7 @@ public class Tracker {
     /**
      * An array which contains an items.
      */
-    private final Item[] items = new Item[4];
+    private final Item[] items = new Item[100];
     /**
      * Указатель ячейки для новой заявки.
      */
@@ -59,6 +59,7 @@ public class Tracker {
                 System.arraycopy(items, i + 1, items, i, items.length - 1 - i);
                 position--;
                 referenceIdResult = true;
+                break;
             }
         }
         return referenceIdResult;
@@ -108,9 +109,5 @@ public class Tracker {
      */
     private String generatedId() {
         return String.valueOf(System.currentTimeMillis() + (RN.nextInt()));
-    }
-
-    public static void main(String[] args) {
-        System.out.println("Hi");
     }
 }

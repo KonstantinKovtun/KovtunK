@@ -2,6 +2,7 @@ package ru.job4j.tracker;
 
 import org.junit.Test;
 import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
@@ -75,7 +76,8 @@ public class TrackerTest {
         boolean b = tracker.delete(items.getId());
         assertTrue(b);
         assertThat(tracker.findAll().length, is(3));
-        assertThat(null, is(tracker.findById(items.getId())));
+        //assertThat(null, is(tracker.findById(items.getId())));
+        assertThat(tracker.findById(items.getId()), is(nullValue()));
     }
     /**
      * Test whenGetsAllItemsFromTracker.
