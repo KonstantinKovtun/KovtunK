@@ -5,6 +5,7 @@ import java.util.Random;
 
 /**
  * Class Tracker contains an array elements of items and also makes some operation with items.
+ *
  * @author Konstantin
  * @version $Id$
  * @since 0.1
@@ -20,8 +21,10 @@ public class Tracker {
     private int position = 0;
 
     private static final Random RN = new Random();
+
     /**
      * A methods which adds a new item.
+     *
      * @param item, item value.
      * @return item, return an array of item.
      */
@@ -30,9 +33,11 @@ public class Tracker {
         this.items[position++] = item;
         return item;
     }
+
     /**
      * A methods which replace a new item with an old item.
-     * @param id, new items' id.
+     *
+     * @param id,   new items' id.
      * @param item, new item.
      * @return boolean.
      */
@@ -46,8 +51,10 @@ public class Tracker {
         }
         return false;
     }
+
     /**
      * A methods which deletes items from array.
+     *
      * @param id, new items' id.
      * @return boolean.
      */
@@ -64,15 +71,19 @@ public class Tracker {
         }
         return referenceIdResult;
     }
+
     /**
      * A methods which gets all items from array.
+     *
      * @return boolean.
      */
     public Item[] findAll() {
         return Arrays.copyOf(items, position);
     }
+
     /**
      * A methods which finds items by key.
+     *
      * @param key, name of items' element.
      * @return item, an array of founded items in array.
      */
@@ -88,8 +99,10 @@ public class Tracker {
         }
         return Arrays.copyOf(result, index);
     }
+
     /**
      * A methods which finds items by key.
+     *
      * @param id, id of items' element.
      * @return item, an array of founded items in array by id.
      */
@@ -101,10 +114,12 @@ public class Tracker {
                 break;
             }
         }
-    return result;
+        return result;
     }
+
     /**
      * A methods which generate id value.
+     *
      * @return id, return generated id for item parameter.
      */
     private String generatedId() {
