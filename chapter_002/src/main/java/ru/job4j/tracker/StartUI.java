@@ -98,7 +98,7 @@ public class StartUI {
         System.out.println("------------ Добавление новой заявки --------------");
         String name = this.input.ask("Введите имя заявки :");
         String desc = this.input.ask("Введите описание заявки :");
-        Item item = new Item("123", name, desc, 131232); //String id, String name, String desc, long create
+        Item item = new Item("123", name, desc, System.currentTimeMillis()); //String id, String name, String desc, long create
         this.tracker.add(item);
         System.out.println("------------ Новая заявка с getId : " + item.getId() + "-----------");
     }
@@ -108,7 +108,7 @@ public class StartUI {
      */
     private void findAllItems() {
         for (Item items : this.tracker.findAll()) {
-            System.out.println("Items' name : " + items.getName() + " " + "items' id : " + items.getId());
+            System.out.println(items.toString());
         }
     }
 
@@ -116,43 +116,51 @@ public class StartUI {
      * Метод реализует редактирование заявки.
      */
     private void editItem() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter an Item id to replace an Item : ");
-        String scan = scanner.nextLine();
-        Item item = new Item("123", "nameKostya", "desc", 131232);
-        this.tracker.replace(scan, item);
+        String id = this.input.ask("Enter an Item id to be replaced : ");
+        String name = this.input.ask("Enter an Item name : ");
+        String desc = this.input.ask("Enter an Item description : ");
+        Item item = new Item("888", name, desc, System.currentTimeMillis());
+
+        if (this.tracker.replace(id, item)) {
+            System.out.println("The Item was replaced !!!");
+        } else {
+            System.out.println("The Item wasn't replaced !!!");
+        }
     }
 
     /**
      * Метод реализует удаление заявки.
      */
     private void deleteItem() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter Item id to delete an Item : ");
-        String scan = scanner.nextLine();
-        this.tracker.delete(scan);
+        String id = this.input.ask("Enter an Item id to delete an Item :");
+
+        if (this.tracker.delete(id)){
+            System.out.println("The current Item was deleted !!!");
+        } else {
+            System.out.println("The current Item wasn't found !!!");
+        }
+
     }
 
     /**
      * Метод реализует поиск заявки по id.
      */
     private void findItemById() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter Item id to find an Item what you need : ");
-        String scan = scanner.nextLine();
-        this.tracker.findById(scan);
-        System.out.println(this.tracker.findById(scan).getName() + "   " + this.tracker.findById(scan).getId());
+        String id = this.input.ask("Enter an Item id to find an Item what you need : ");
+
+        if (id != null) {
+            System.out.println(this.tracker.findById(id).toString());
+        }
     }
 
     /**
      * Метод реализует поиск заявки по имени.
      */
     private void findItemByName() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter Item name to find an Item what you need : ");
-        String scan = scanner.nextLine();
-        for (Item item : this.tracker.findByName(scan)) {
-            System.out.println(item.getName() + "  " + item.getId());
+        String id = this.input.ask("Enter an Item name to find an Item what you need : ");
+
+        for (Item item : this.tracker.findByName(id)) {
+            System.out.println(item.toString());
         }
     }
 
@@ -160,6 +168,7 @@ public class StartUI {
      * Метод реализует меню пользователя.
      */
     private void showMenu() {
+        System.out.println();
         System.out.println("Menu.");
         System.out.println("0.Add new Item.");
         System.out.println("1.Show all items.");
@@ -168,6 +177,7 @@ public class StartUI {
         System.out.println("4.Find item by Id.");
         System.out.println("5.Find items by name.");
         System.out.println("6.Exit Program.");
+        System.out.println();
         // добавить остальные пункты меню.
     }
 

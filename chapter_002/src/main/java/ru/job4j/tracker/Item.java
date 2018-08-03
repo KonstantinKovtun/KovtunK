@@ -15,6 +15,17 @@ public class Item {
         //this.comments = comments;
     }
 
+    public Item(String name, String desc, long create) {
+        this.name = name;
+        this.desc = desc;
+        this.create = create;
+    }
+
+    @Override
+    public String toString(){
+        return "id : " + this.id + " name : " + this.name + " description : " + this.desc + " create : " + this.create;
+    }
+
     public void setId(String id) {
         this.id = id;
     }
