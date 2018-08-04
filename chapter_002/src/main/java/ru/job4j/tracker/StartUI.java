@@ -134,7 +134,7 @@ public class StartUI {
     private void deleteItem() {
         String id = this.input.ask("Enter an Item id to delete an Item :");
 
-        if (this.tracker.delete(id)){
+        if (this.tracker.delete(id)) {
             System.out.println("The current Item was deleted !!!");
         } else {
             System.out.println("The current Item wasn't found !!!");
@@ -149,7 +149,9 @@ public class StartUI {
         String id = this.input.ask("Enter an Item id to find an Item what you need : ");
 
         if (id != null) {
-            System.out.println(this.tracker.findById(id).toString());
+            System.out.println("The current id was founded by id !!!: " + this.tracker.findById(id).toString());
+        } else {
+            System.out.println("The current id didn't exist in the class Tracker !!!");
         }
     }
 
@@ -160,7 +162,7 @@ public class StartUI {
         String id = this.input.ask("Enter an Item name to find an Item what you need : ");
 
         for (Item item : this.tracker.findByName(id)) {
-            System.out.println(item.toString());
+            System.out.println("The current id by name was founded !!!: " + item.toString());
         }
     }
 

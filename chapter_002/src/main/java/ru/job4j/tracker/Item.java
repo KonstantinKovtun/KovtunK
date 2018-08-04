@@ -22,7 +22,7 @@ public class Item {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return "id : " + this.id + " name : " + this.name + " description : " + this.desc + " create : " + this.create;
     }
 
