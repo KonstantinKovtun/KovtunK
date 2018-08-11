@@ -65,11 +65,6 @@ public class StartUI {
         this.tracker = tracker;
     }
 
-    public StartUI(Input input, Tracker[] trackers) {
-        this.input = input;
-        this.tracker = trackers[0];
-    }
-
     /**
      * Основой цикл программы.
      */
@@ -194,10 +189,6 @@ public class StartUI {
      * @param args
      */
     public static void main(String[] args) {
-        //new StartUI(new ConsoleInput(), new Tracker()).init();
-        StartUI ui = new StartUI(new ConsoleInput(), {
-                new Tracker().add(new Item("123", "name", "desc", 85666)),
-                new Tracker().add(new Item("123", "name", "desc", 85666))
-        });
+        new StartUI(new ConsoleInput(), new Tracker()).init();
     }
 }
