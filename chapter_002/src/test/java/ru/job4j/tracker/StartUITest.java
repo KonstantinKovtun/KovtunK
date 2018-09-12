@@ -1,6 +1,9 @@
 package ru.job4j.tracker;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
+
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.Assert.assertFalse;
@@ -8,6 +11,7 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 public class StartUITest {
+    private Tracker tracker = new Tracker();
 
     @Test
     public void whenUserAddItemThenTrackerHasNewItemWithSameName() {
@@ -43,5 +47,48 @@ public class StartUITest {
         new StartUI(input, tracker).init();
         // проверяем, что добавленная заявка была удалена.
         assertThat(tracker.findById(item.getId()), is(nullValue()));
+    }
+
+    @Test
+    public void whenUserGetsAllItemsThenTrackerReturnsAllItems() {
+        Item[] items = tracker.findAll();
+        assertThat(tracker.findAll().length, is(3));
+        //создаём StubInput с последовательностью действий
+        Input input = new StubInput(new String[]{"1", "6"});
+        //создаём StartUI и вызываем метод init()
+        new StartUI(input, tracker).init();
+        //проверяем какие заявки возращает класс StartUI
+        assertThat(tracker.findAll()[0], is(items[0]));
+        assertThat(tracker.findAll()[1], is(items[1]));
+        assertThat(tracker.findAll()[2], is(items[2]));
+    }
+
+    @Test
+    public void whenUserFindsItemByIdThenTrackerReturnsItemWithTheSameId() {
+        Item item = tracker.add(new Item("29", "NameAnn", "desc", 240812018));
+        Input input = new StubInput(new String[]{"4", item.getId(), "6"});
+        new StartUI(input, tracker).init();
+        //assertThat(result, is(expected));
+        assertThat(tracker.findById(item.getId()).getId(), is(item.getId()));
+    }
+
+    @Test
+    public void whenUserFindsItemByNameThenTrackerReturnsItemWithTheSameName() {
+        Item item = tracker.add(new Item("29", "Name_Anna", "desc 18.25", 240812018));
+        Input input = new StubInput(new String[]{"5", item.getName(), "6"});
+        new StartUI(input, tracker).init();
+        //assertThat(result, is(expected));
+        assertThat(tracker.findByName(item.getName())[0].getName(), is(item.getName()));
+    }
+
+    @Before
+    public void loadOutput() {
+        tracker.add(new Item("1", "Name1", "desc1", 121));
+        tracker.add(new Item("2", "Name2", "desc2", 122));
+        tracker.add(new Item("3", "Name3", "desc3", 123));
+    }
+
+    @After
+    public void backOutput() {
     }
 }

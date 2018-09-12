@@ -103,12 +103,12 @@ public class TrackerTest {
     public void whenFindsItemByIdInTracker() {
         Tracker tracker = new Tracker();
         Item items = tracker.add(new Item("19", "Name1", "desc1", 121));
-        //tracker.add(new Item("19", "Name1", "desc1", 121));
         tracker.add(new Item("29", "Name2", "desc2", 122));
         tracker.add(new Item("39", "Name3", "desc3", 123));
         tracker.add(new Item("292", "Name4", "desc4", 124));
         tracker.findById(items.getId());
         assertThat(tracker.findAll().length, is(4));
         assertThat(tracker.findAll()[0].getId(), is(items.getId()));
+        //assertThat(tracker.findById(items.getId()).getId(), is(items.getId()));
     }
 }
