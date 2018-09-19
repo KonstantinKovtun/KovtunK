@@ -4,6 +4,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.Assert.assertFalse;
@@ -11,7 +14,8 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 public class StartUITest {
-    private Tracker tracker = new Tracker();
+    private final PrintStream stdout = System.out;
+    private final ByteArrayOutputStream out = new ByteArrayOutputStream();
 
     @Test
     public void whenUserAddItemThenTrackerHasNewItemWithSameName() {
@@ -23,7 +27,6 @@ public class StartUITest {
 
     @Test
     public void whenUpdateThenTrackerHasUpdatedValue() {
-        // создаём Tracker
         Tracker tracker = new Tracker();
         //Напрямую добавляем заявку
         Item item = tracker.add(new Item("test name", "desc", 78778789));
@@ -37,7 +40,6 @@ public class StartUITest {
 
     @Test
     public void whenDeleteThenTrackerHasNotNewValue() {
-        // создаём Tracker
         Tracker tracker = new Tracker();
         //Напрямую добавляем заявку
         Item item = tracker.add(new Item("3321", "test name", "item to delete", 78778789));
@@ -51,6 +53,10 @@ public class StartUITest {
 
     @Test
     public void whenUserGetsAllItemsThenTrackerReturnsAllItems() {
+        Tracker tracker = new Tracker();
+        tracker.add(new Item("1", "Name1", "desc1", 121));
+        tracker.add(new Item("2", "Name2", "desc2", 122));
+        tracker.add(new Item("3", "Name3", "desc3", 123));
         Item[] items = tracker.findAll();
         assertThat(tracker.findAll().length, is(3));
         //создаём StubInput с последовательностью действий
@@ -65,6 +71,10 @@ public class StartUITest {
 
     @Test
     public void whenUserFindsItemByIdThenTrackerReturnsItemWithTheSameId() {
+        Tracker tracker = new Tracker();
+        tracker.add(new Item("1", "Name1", "desc1", 121));
+        tracker.add(new Item("2", "Name2", "desc2", 122));
+        tracker.add(new Item("3", "Name3", "desc3", 123));
         Item item = tracker.add(new Item("29", "NameAnn", "desc", 240812018));
         Input input = new StubInput(new String[]{"4", item.getId(), "6"});
         new StartUI(input, tracker).init();
@@ -74,6 +84,10 @@ public class StartUITest {
 
     @Test
     public void whenUserFindsItemByNameThenTrackerReturnsItemWithTheSameName() {
+        Tracker tracker = new Tracker();
+        tracker.add(new Item("1", "Name1", "desc1", 121));
+        tracker.add(new Item("2", "Name2", "desc2", 122));
+        tracker.add(new Item("3", "Name3", "desc3", 123));
         Item item = tracker.add(new Item("29", "Name_Anna", "desc 18.25", 240812018));
         Input input = new StubInput(new String[]{"5", item.getName(), "6"});
         new StartUI(input, tracker).init();
@@ -83,12 +97,13 @@ public class StartUITest {
 
     @Before
     public void loadOutput() {
-        tracker.add(new Item("1", "Name1", "desc1", 121));
-        tracker.add(new Item("2", "Name2", "desc2", 122));
-        tracker.add(new Item("3", "Name3", "desc3", 123));
+        System.out.println("execute before method");
+        System.setOut(new PrintStream(this.out));
     }
 
     @After
     public void backOutput() {
+        System.setOut(this.stdout);
+        System.out.println("execute after method");
     }
 }
