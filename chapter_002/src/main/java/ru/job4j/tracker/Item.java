@@ -21,6 +21,12 @@ public class Item {
         this.create = create;
     }
 
+    public Item(String name, String desc) {
+        this.name = name;
+        this.desc = desc;
+        this.create = create;
+    }
+
     @Override
     public String toString() {
         return "id : " + this.id + " name : " + this.name + " description : " + this.desc + " create : " + this.create;

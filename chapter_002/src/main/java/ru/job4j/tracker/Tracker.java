@@ -37,7 +37,7 @@ public class Tracker {
     /**
      * A methods which replace a new item with an old item.
      *
-     * @param id,   new items' id.
+     * @param id, new items' id.
      * @param item, new item.
      * @return boolean.
      */
