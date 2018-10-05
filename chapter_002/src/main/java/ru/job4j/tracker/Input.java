@@ -6,5 +6,5 @@ public interface Input {
     String ask(String question);
     //все модификаторы доступа в интерфейса по умолчанию public
 
-    //List<Integer> ask(String question, List<Integer> range);
+    int ask(String question, List<Integer> range);
 }

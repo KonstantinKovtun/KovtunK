@@ -103,9 +103,10 @@ public class StartUI {
         }
         do {
             menu.show();
-            //menu.select(input.ask("select:", range));
-            int key = Integer.valueOf(input.ask("Select : "));
-            menu.select(key);
+            menu.select(input.ask("select:", range));
+            //int key = Integer.valueOf(input.ask("Select : "));
+            //int key = Integer.valueOf(input.ask("Select : ", range));
+            //menu.select(key);
         } while (!"y".equals(this.input.ask("Exit?(y): ")));
     }
     /**
