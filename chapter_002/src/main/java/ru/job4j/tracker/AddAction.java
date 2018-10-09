@@ -2,12 +2,17 @@ package ru.job4j.tracker;
 
 public class AddAction implements UserAction {
 
+    private int key;
+    private String desc;
+
     public AddAction(int key, String desc) {
+        this.key = key;
+        this.desc = desc;
     }
 
     @Override
     public int key() {
-        return 0;
+        return this.key;
     }
 
     @Override
@@ -24,6 +29,6 @@ public class AddAction implements UserAction {
 
     @Override
     public String info() {
-        return "Add new Item.";
+        return String.format("%d. %s", key, desc);
     }
 }

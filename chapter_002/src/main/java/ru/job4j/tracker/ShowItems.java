@@ -2,12 +2,18 @@ package ru.job4j.tracker;
 
 public class ShowItems implements UserAction {
 
+    private int key;
+    private String desc;
+
     public ShowItems(int key, String desc) {
+        this.key = key;
+        this.desc = desc;
+
     }
 
     @Override
     public int key() {
-        return 1;
+        return this.key;
     }
 
     @Override
@@ -19,6 +25,6 @@ public class ShowItems implements UserAction {
 
     @Override
     public String info() {
-        return "Show all items : ";
+        return String.format("%d. %s", key, desc);
     }
 }
