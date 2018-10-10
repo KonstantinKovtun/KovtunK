@@ -62,10 +62,15 @@ public class Tracker {
         boolean referenceIdResult = false;
 
         for (int i = 0; i < items.length; i++) {
-            if (this.items[i].getId().equals(id)) {
-                System.arraycopy(items, i + 1, items, i, items.length - 1 - i);
-                position--;
-                referenceIdResult = true;
+            if (this.items[i] != null) {
+                if (this.items[i].getId().equals(id)) {
+                    System.arraycopy(items, i + 1, items, i, items.length - 1 - i);
+                    position--;
+                    referenceIdResult = true;
+                    break;
+                }
+            } else {
+                System.out.println("NULL!!!"); // If item's id doesn't match to current id.
                 break;
             }
         }

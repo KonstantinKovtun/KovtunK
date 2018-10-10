@@ -19,8 +19,8 @@ public class StubInput implements Input {
 
     @Override
     public int ask(String question, List<Integer> range) {
-        System.out.print(question + " from 0 to 6: ");
+        //System.out.print(question + " from 0 to 6: ");
         //return Integer.valueOf(scanner.nextInt());
-        return 0;
+        return Integer.valueOf(value[this.position++]);
     }
 }
