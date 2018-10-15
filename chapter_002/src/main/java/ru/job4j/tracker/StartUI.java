@@ -51,6 +51,8 @@ public class StartUI {
      */
     private final Input input;
 
+    private boolean working = true;
+
     /**
      * Хранилище заявок.
      */
@@ -98,7 +100,7 @@ public class StartUI {
     public void init() {
         MenuTracker menu = new MenuTracker(this.input, this.tracker);
         List<Integer> range = new ArrayList<>();
-        menu.fillActions();
+        menu.fillActions(this);
         for (int i = 0; i < menu.getActionsLentgh(); i++) {
             range.add(i);
         }
@@ -106,7 +108,11 @@ public class StartUI {
             menu.show();
             System.out.println();
             menu.select(input.ask("Select: ", range));
-        } while (!"y".equals(this.input.ask("Exit?(y): ")));
+        } while (this.working); //while (!"y".equals(this.input.ask("Exit?(y): ")));
+    }
+
+    public void stop() {
+        this.working = false;
     }
 
     /**

@@ -1,6 +1,7 @@
 package ru.job4j.tracker;
 
 public interface UserAction {
+
     /**
      * Метод возвращает ключ опции.
      * @return ключ
