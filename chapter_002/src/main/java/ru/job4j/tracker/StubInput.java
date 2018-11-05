@@ -23,4 +23,10 @@ public class StubInput implements Input {
         //return Integer.valueOf(scanner.nextInt());
         return Integer.valueOf(value[this.position++]);
     }
+
+    @Override
+    public int ask(String question, int[] range) {
+        //throw new UnsupportedOperationException("Unsupported operation exception");
+        return -1;
+    }
 }
