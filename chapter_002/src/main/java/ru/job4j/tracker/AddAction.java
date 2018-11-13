@@ -25,6 +25,7 @@ public class AddAction implements UserAction {
         System.out.println("------------ New Item with Id : " + item.getId());
         System.out.println("------------ New Item with Name : " + item.getName());
         System.out.println("------------ New Item with Description : " + item.getDesc());
+        System.out.println();
     }
 
     @Override

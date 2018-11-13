@@ -100,14 +100,24 @@ public class StartUI {
     public void init() {
         MenuTracker menu = new MenuTracker(this.input, this.tracker);
         List<Integer> range = new ArrayList<>();
+        //int[] listRange = range.stream().mapToInt(i->i).toArray();
+
         menu.fillActions(this);
+
         for (int i = 0; i < menu.getActionsLentgh(); i++) {
             range.add(i);
         }
+
+        int[] listRange = new int[range.size()];
+
+        for (int i = 0; i < listRange.length; i++) {
+            listRange[i] = range.get(i);
+        }
+
         do {
             menu.show();
             System.out.println();
-            menu.select(input.ask("Select: ", range));
+            menu.select(input.ask("Select: ", listRange));
         } while (this.working); //while (!"y".equals(this.input.ask("Exit?(y): ")));
     }
 
@@ -212,6 +222,6 @@ public class StartUI {
      * @param args
      */
     public static void main(String[] args) {
-        new StartUI(new ValidateInput(), new Tracker()).init();// ConsoleInput
+        new StartUI(new ValidateInput(), new Tracker()).init();
     }
 }

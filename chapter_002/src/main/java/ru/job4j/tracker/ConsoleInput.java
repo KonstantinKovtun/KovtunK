@@ -21,13 +21,18 @@ public class ConsoleInput implements Input {
     @Override
     public int ask(String question, int[] range) {
         int key = Integer.valueOf(this.ask(question));
-        boolean exit = false;
+        boolean exist = false;
         for (int value : range) {
             if (value == key) {
-                exit = true;
+                exist = true;
                 break;
             }
         }
-        return exit ? key : -1;
+
+        if (exist) {
+            return key;
+        } else {
+            throw new MenuOutException("Out of menu range!!!");
+        }
     }
 }
