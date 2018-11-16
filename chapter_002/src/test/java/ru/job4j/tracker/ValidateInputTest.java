@@ -1,8 +1,14 @@
 package ru.job4j.tracker;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 
 /**
  * Test class ValidateInputTest.
@@ -12,24 +18,30 @@ import static org.junit.Assert.assertThat;
  * @since 0.1
  */
 public class ValidateInputTest {
+    private final ByteArrayOutputStream mem = new ByteArrayOutputStream();
+    private final PrintStream out = System.out;
+
+    @Before
+    public void loadMem() {
+        System.setOut(new PrintStream(this.mem));
+    }
+
+    @After
+    public void loadSys() {
+        System.setOut(this.out);
+    }
     /**
      * Test whenAskThenException.
      */
     @Test
-    public void whenAskThenException() {
-        ValidateInput validateInput = new ValidateInput();
-        int[] range = {0, 1, 2, 3, 4, 5, 6};
-        String resultIndexOutOfRange, resultNumberFormat;
-        int result = validateInput.ask("Select", range);
-
-        if (result < 0 || result > 6 ) {
-            resultIndexOutOfRange = "Please select key for menu.";
-            assertThat(resultIndexOutOfRange, is("Please select key for menu."));
-        } else {
-            if (Integer.valueOf(result) != ) {// проверка условия является ли result не цифра
-                resultNumberFormat = "Please enter a valid data again.";
-                assertThat(resultNumberFormat, is("Please enter a valid data again."));
-            }
-        }
+    public void whenInvalidInput() {
+        ValidateInput input = new ValidateInput(new StubInput(new String[] {"invalid", "1"}));
+        input.ask("Enter", new int[] {1});
+        assertThat(
+                this.mem.toString(),
+                is(
+                        String.format("Please enter a valid data again.%n")
+                )
+        );
     }
 }
