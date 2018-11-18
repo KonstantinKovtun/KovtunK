@@ -14,7 +14,7 @@ public class ValidateInput implements Input {
      * Stores the link on the interface Input.
      */
     private final Input input;
-    private Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in);
 
     /**
      * The constructor initializes the field.

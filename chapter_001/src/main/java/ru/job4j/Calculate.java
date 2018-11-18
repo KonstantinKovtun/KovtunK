@@ -7,8 +7,7 @@ package ru.job4j;
  * @version $Id$
  * @since 0.1
  *  Конструктор, выводит строки в консоль.
- * @param arg - arg.
-*/
+ */
 public class Calculate {
     /**
      * Main.

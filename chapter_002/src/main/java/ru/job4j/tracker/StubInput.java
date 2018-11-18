@@ -33,10 +33,9 @@ public class StubInput implements Input {
             }
         }
 
-        if (exist) {
-            return key;
-        } else {
+        if (!exist) {
             throw new MenuOutException("Out of menu range!!!");
         }
+        return key;
     }
 }
