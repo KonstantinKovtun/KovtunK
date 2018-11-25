@@ -100,7 +100,6 @@ public class StartUI {
     public void init() {
         MenuTracker menu = new MenuTracker(this.input, this.tracker);
         List<Integer> range = new ArrayList<>();
-        //int[] listRange = range.stream().mapToInt(i->i).toArray();
 
         menu.fillActions(this);
 
@@ -213,7 +212,6 @@ public class StartUI {
         System.out.println("5.Find items by name.");
         System.out.println("6.Exit Program.");
         System.out.println();
-        // добавить остальные пункты меню.
     }
 
     /**
