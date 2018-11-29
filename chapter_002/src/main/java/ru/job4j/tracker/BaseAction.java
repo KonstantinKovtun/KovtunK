@@ -10,7 +10,7 @@ public abstract class BaseAction implements UserAction {
     private final int key;
     private final String name;
 
-    protected BaseAction (final int key, final String name) {
+    protected BaseAction(final int key, final String name) {
         this.key = key;
         this.name = name;
     }
@@ -19,7 +19,7 @@ public abstract class BaseAction implements UserAction {
      * Use for choose element of menu Item.
      */
     @Override
-    public int key(){
+    public int key() {
         return this.key;
     }
     /**
