@@ -19,10 +19,12 @@ public class Logic {
     public void add(Figure figure) {
         this.figures[this.index++] = figure;
     }
-
+    //todo add exceptions for move() method throws ImpossibleMoveException,
+    //todo OccupiedWayException, FigureNotFoundException
     public boolean move(Cell source, Cell dest) {
         boolean rst = false;
         int index = this.findBy(source);
+       // this.figures[0]
         if (index != -1) {
             Cell[] steps = this.figures[index].way(source, dest);
             if (steps.length > 0 && steps[steps.length - 1].equals(dest)) {

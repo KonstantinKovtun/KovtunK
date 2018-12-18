@@ -17,4 +17,10 @@ public enum Cell {
         this.x = x;
         this.y = y;
     }
+
+//   public static void main(String[] args) {
+//        Cell[] kk;
+//
+//        kk = Cell.values();
+//    }
 }
