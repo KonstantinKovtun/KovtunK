@@ -23,15 +23,27 @@ public class RookBlack implements Figure {
 
     @Override
     public Cell[] way(Cell source, Cell dest) {
-        Cell[] steps = new Cell[0];
+        Cell[] steps = new Cell[8];
 
-        if ((source.x == dest.x && source.y == dest.y + 1) || (source.x == dest.x + 1 && source.y == dest.y) ||
-                (source.x == dest.x - 1 && source.y == dest.y) ||
-                (source.x == dest.x && source.y == dest.y - 1)) {
-            steps = new Cell[] {dest };
+        for (int i = 0; i < steps.length; i++) {
+            if ((source.x == dest.x && source.y == dest.y + i) || (source.x == dest.x + i && source.y == dest.y) ||
+                    (source.x == dest.x - i && source.y == dest.y) ||
+                    (source.x == dest.x && source.y == dest.y - i)) {
+                steps = new Cell[]{dest};
+            }
         }
         return steps;
+/*
+        for (int i = 0; i < steps.length; i++) {
+            if (source.x == dest.x && source.y != dest.y || source.x != dest.x && source.y == dest.y) {
+                steps[i] = Cell.values()[i];
+            }
+        }
+        return steps;
+*/
     }
+
+
 
     @Override
     public Figure copy(Cell dest) {
