@@ -26,37 +26,26 @@ public class BishopBlack implements Figure {
     public Cell[] way(Cell source, Cell dest) {
         Cell[] steps = new Cell[Math.abs(dest.x - source.x)];
 
-        int diffX = source.x - dest.x;
-        int diffY = source.y - dest.y;
-        int len = 0;
+        int deltaX = (dest.x - source.x) < 0 ? -1 : 1;
+        int deltaY = (dest.y - source.y) < 0 ? -1 : 1;
 
-        Cell[] way = new Cell[] {source};
-
-        //if (diffX != 0 & diffY == 0) {
-            len = Math.abs(diffX) + 1;
-        //}
-//        if (diffY != 0 & diffX == 0) {
-//            len = Math.abs(diffY) + 1;
-//        }
-
-        Cell[] step = new Cell[len];
-
-        if (diffX > 0 & diffY > 0) {
-            int counter = 0;
-            for (int i = 0; i < len; i++) {
-                counter = 8 * (source.x + i) + (source.y);
-                step[i] = Cell.values()[counter];
+        if (impossibleMoveBishop(source, dest)) {
+            for (int index = 0; index < steps.length; index++) {
+                steps[index] = Cell.values()[(source.x + deltaX * (index + 1)) * 8 + (source.y + deltaY * (index + 1))];
             }
-        } else if (diffY < 0 & diffX < 0) {
-            int counter = 0;
-            for (int i = 0; i < len; i++) {
-                counter = 8 * (source.x) + (source.y + i);
-                step[i] = Cell.values()[counter];
-            }
+        } else {
+            // throw new ImpossibleMoveException("fdfdjjjj");
         }
-        way = Arrays.copyOf(steps, steps.length);
+        return steps;
+    }
 
-        return way;
+    public boolean impossibleMoveBishop(Cell source, Cell dest) {
+        boolean rst = false;
+
+        if (Math.abs(dest.x - source.x) == Math.abs(dest.y - source.y)) {
+            rst = true;
+        }
+        return rst;
     }
 
     @Override

@@ -3,6 +3,7 @@ package ru.job4j.chess.figures.white;
 import ru.job4j.chess.figures.Cell;
 import ru.job4j.chess.figures.Figure;
 
+
 /**
  *
  * @author Kovtun Konstantin (kovtun.kostya@gmail.com)
@@ -23,15 +24,28 @@ public class BishopWhite implements Figure {
 
     @Override
     public Cell[] way(Cell source, Cell dest) {
-        Cell[] steps = new Cell[0];
+        Cell[] steps = new Cell[Math.abs(dest.x - source.x)];
 
-        if ( (source.y == dest.y + 1 && source.x == dest.x + 1) ||
-                (source.y == dest.y + 1 && source.x == dest.x - 1) ||
-                (source.y == dest.y - 1 && source.x == dest.x - 1) ||
-                (source.y == dest.y - 1 && source.x == dest.x + 1)) {
-            steps = new Cell[] {dest };
+        int deltaX = (dest.x - source.x) < 0 ? -1 : 1;
+        int deltaY = (dest.y - source.y) < 0 ? -1 : 1;
+
+        if (impossibleMoveBishop(source, dest)) {
+           // throw new ImpossibleMoveException("fdfd");
+        } else {
+            for (int index = 0; index < steps.length; index++) {
+                steps[index] = Cell.values()[(source.x + deltaX * (index + 1)) * 8 + (source.y + deltaY * (index + 1))];
+            }
         }
         return steps;
+    }
+
+    public boolean impossibleMoveBishop(Cell source, Cell dest) {
+        boolean rst = false;
+
+        if (Math.abs(dest.x - source.x) != Math.abs(dest.y - source.y)) {
+            rst = true;
+        }
+        return rst;
     }
 
     @Override

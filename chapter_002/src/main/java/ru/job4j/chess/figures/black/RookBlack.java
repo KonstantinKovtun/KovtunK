@@ -29,6 +29,7 @@ public class RookBlack implements Figure {
         int diffX = source.x - dest.x;
         int diffY = source.y - dest.y;
         int len = 0;
+        int counter = 0;
 
         Cell[] way = new Cell[] {source};
 
@@ -43,13 +44,11 @@ public class RookBlack implements Figure {
 
         if (diffX != 0 & diffY == 0) {
             if (diffX < 0) {
-                int counter = 0;
                 for (int i = 0; i < len; i++) {
                     counter = 8 * (source.x + i) + (source.y);
                     steps[i] = Cell.values()[counter];
                 }
-            } else if (diffX > 0) {
-                int counter = 0;
+            } else  {
                 for (int i = 0; i < len; i++) {
                     counter = 8 * (source.x - i) + (source.y);
                     steps[i] = Cell.values()[counter];
@@ -57,13 +56,11 @@ public class RookBlack implements Figure {
             }
         } else if (diffY != 0 & diffX == 0) {
             if (diffY < 0) {
-                int counter = 0;
                 for (int i = 0; i < len; i++) {
                     counter = 8 * (source.x) + (source.y + i);
                     steps[i] = Cell.values()[counter];
                 }
-            } else if (diffY > 0) {
-                int counter = 0;
+            } else {
                 for (int i = 0; i < len; i++) {
                     counter = 8 * (source.x) + (source.y - i);
                     steps[i] = Cell.values()[counter];
@@ -74,8 +71,6 @@ public class RookBlack implements Figure {
 
         return way;
     }
-
-
 
     @Override
     public Figure copy(Cell dest) {
