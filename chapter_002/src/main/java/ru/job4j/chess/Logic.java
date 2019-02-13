@@ -1,7 +1,6 @@
 package ru.job4j.chess;
 
-import ru.job4j.chess.figures.Cell;
-import ru.job4j.chess.figures.Figure;
+import ru.job4j.chess.figures.*;
 
 import java.util.Optional;
 

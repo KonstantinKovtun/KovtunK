@@ -30,11 +30,11 @@ public class BishopWhite implements Figure {
         int deltaY = (dest.y - source.y) < 0 ? -1 : 1;
 
         if (impossibleMoveBishop(source, dest)) {
-           // throw new ImpossibleMoveException("fdfd");
-        } else {
             for (int index = 0; index < steps.length; index++) {
                 steps[index] = Cell.values()[(source.x + deltaX * (index + 1)) * 8 + (source.y + deltaY * (index + 1))];
             }
+        } else {
+            // throw new ImpossibleMoveException("fdfd");
         }
         return steps;
     }
@@ -42,7 +42,7 @@ public class BishopWhite implements Figure {
     public boolean impossibleMoveBishop(Cell source, Cell dest) {
         boolean rst = false;
 
-        if (Math.abs(dest.x - source.x) != Math.abs(dest.y - source.y)) {
+        if (Math.abs(dest.x - source.x) == Math.abs(dest.y - source.y)) {
             rst = true;
         }
         return rst;
