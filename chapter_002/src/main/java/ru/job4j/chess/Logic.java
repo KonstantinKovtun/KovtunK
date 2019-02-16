@@ -5,7 +5,7 @@ import ru.job4j.chess.figures.*;
 import java.util.Optional;
 
 /**
- * //TODO add comments.
+ *
  *
  * @author Petr Arsentev (parsentev@yandex.ru)
  * @version $Id$
@@ -18,18 +18,27 @@ public class Logic {
     public void add(Figure figure) {
         this.figures[this.index++] = figure;
     }
-    //todo add exceptions for move() method throws ImpossibleMoveException,
-    //todo OccupiedWayException, FigureNotFoundException
-    public boolean move(Cell source, Cell dest) {
+
+    public boolean move(Cell source, Cell dest) throws FigureNotFoundException {
         boolean rst = false;
         int index = this.findBy(source);
-       // this.figures[0]
-        if (index != -1) {
-            Cell[] steps = this.figures[index].way(source, dest);
-            if (steps.length > 0 && steps[steps.length - 1].equals(dest)) {
-                rst = true;
-                this.figures[index] = this.figures[index].copy(dest);
+
+        try {
+            if (index != -1) {
+                Cell[] steps = this.figures[index].way(source, dest);
+                if (steps.length > 0 && steps[steps.length - 1].equals(dest)) {
+                    rst = true;
+                    this.figures[index] = this.figures[index].copy(dest);
+                }
+            } else {
+                throw new FigureNotFoundException("The figure not found");
             }
+        } catch (ImpossibleMoveException ex) {
+            System.out.println(ex.getMessage());
+        } catch (FigureNotFoundException ex) {
+            System.out.println(ex.getMessage());
+        } catch (OccupiedWayException ex) {
+            System.out.println(ex.getMessage());
         }
         return rst;
     }

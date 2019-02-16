@@ -33,8 +33,6 @@ public class BishopWhite implements Figure {
             for (int index = 0; index < steps.length; index++) {
                 steps[index] = Cell.values()[(source.x + deltaX * (index + 1)) * 8 + (source.y + deltaY * (index + 1))];
             }
-        } else {
-            // throw new ImpossibleMoveException("fdfd");
         }
         return steps;
     }

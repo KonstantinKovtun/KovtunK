@@ -2,8 +2,7 @@ package ru.job4j.chess.figures;
 
 public interface Figure {
     Cell position();
-//todo add exceptions for way() method throws ImpossibleMoveException
-    Cell[] way(Cell source, Cell dest);
+    Cell[] way(Cell source, Cell dest) throws ImpossibleMoveException, FigureNotFoundException, OccupiedWayException;
 
     default String icon() {
         return String.format(
