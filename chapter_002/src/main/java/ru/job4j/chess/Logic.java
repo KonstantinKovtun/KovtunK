@@ -19,19 +19,23 @@ public class Logic {
         this.figures[this.index++] = figure;
     }
 
-    public boolean move(Cell source, Cell dest) throws FigureNotFoundException {
+    public boolean move(Cell source, Cell dest) {
         boolean rst = false;
         int index = this.findBy(source);
 
         try {
             if (index != -1) {
                 Cell[] steps = this.figures[index].way(source, dest);
-                if (steps.length > 0 && steps[steps.length - 1].equals(dest)) {
-                    rst = true;
-                    this.figures[index] = this.figures[index].copy(dest);
+                if (occupiedWay(steps)) {
+                    if (steps.length > 0 && steps[steps.length - 1].equals(dest)) {
+                        rst = true;
+                        this.figures[index] = this.figures[index].copy(dest);
+                    }
+                } else {
+                    throw new OccupiedWayException("The is ouccupieted!!!");
                 }
             } else {
-                throw new FigureNotFoundException("The figure not found");
+                throw new FigureNotFoundException("The figure not found!!!");
             }
         } catch (ImpossibleMoveException ex) {
             System.out.println(ex.getMessage());
@@ -41,6 +45,19 @@ public class Logic {
             System.out.println(ex.getMessage());
         }
         return rst;
+    }
+
+    public boolean occupiedWay(Cell[] steps) {
+        boolean place = true;
+
+        for (int i = 0; i < steps.length; i++) {
+
+            if (this.findBy(steps[i]) != -1) {
+                place = false;
+                break;
+            }
+        }
+        return place;
     }
 
     public void clean() {

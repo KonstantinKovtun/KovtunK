@@ -1,5 +1,6 @@
 package ru.job4j.chess.figures.black;
 
+import ru.job4j.chess.Logic;
 import ru.job4j.chess.figures.*;
 
 import java.util.Arrays;
@@ -22,7 +23,7 @@ public class BishopBlack implements Figure {
     }
 
     @Override
-    public Cell[] way(Cell source, Cell dest) throws ImpossibleMoveException, OccupiedWayException {
+    public Cell[] way(Cell source, Cell dest) throws ImpossibleMoveException {
         Cell[] steps = new Cell[Math.abs(dest.x - source.x)];
 
         int deltaX = (dest.x - source.x) < 0 ? -1 : 1;
@@ -44,16 +45,7 @@ public class BishopBlack implements Figure {
         if (Math.abs(dest.x - source.x) == Math.abs(dest.y - source.y)) {
             rst = true;
         }
-
         return rst;
-    }
-
-    public boolean occupiedWay(Cell source, Cell dest) {
-        boolean place = false;
-
-      //  if ()
-
-        return place;
     }
 
     @Override
