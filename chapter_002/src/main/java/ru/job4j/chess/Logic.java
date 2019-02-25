@@ -22,44 +22,32 @@ public class Logic {
     public boolean move(Cell source, Cell dest) {
         boolean rst = false;
         int index = this.findBy(source);
-
         try {
             if (index != -1) {
                 Cell[] steps = this.figures[index].way(source, dest);
-           //     if (occupiedWay(steps)) {
-                    if (steps.length > 0 && steps[steps.length - 1].equals(dest)) {
-                        rst = true;
-                        this.figures[index] = this.figures[index].copy(dest);
-                    }
-             //   } else {
-              //      throw new OccupiedWayException("The is ouccupieted!!!");
-              //  }
+                occupiedWay(steps);
+                if (steps.length > 0 && steps[steps.length - 1].equals(dest)) {
+                    rst = true;
+                    this.figures[index] = this.figures[index].copy(dest);
+                }
             } else {
                 throw new FigureNotFoundException("The figure not found!!!");
             }
-        } catch (ImpossibleMoveException ex) {
-            System.out.println(ex.getMessage());
-        } catch (FigureNotFoundException ex) {
-            System.out.println(ex.getMessage());
-        } catch (OccupiedWayException ex) {
+        } catch (ImpossibleMoveException | FigureNotFoundException | OccupiedWayException ex) {
             System.out.println(ex.getMessage());
         }
         return rst;
     }
-/*
-    public boolean occupiedWay(Cell[] steps) {
-        boolean place = true;
 
+    public boolean occupiedWay(Cell[] steps) throws OccupiedWayException {
         for (int i = 0; i < steps.length; i++) {
-
             if (this.findBy(steps[i]) != -1) {
-                place = false;
-                break;
+                throw new OccupiedWayException("The figure is occupied the way!!!");
             }
         }
-        return place;
+        return true;
     }
-*/
+
     public void clean() {
         for (int position = 0; position != this.figures.length; position++) {
             this.figures[position] = null;
