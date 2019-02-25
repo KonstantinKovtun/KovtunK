@@ -26,14 +26,14 @@ public class Logic {
         try {
             if (index != -1) {
                 Cell[] steps = this.figures[index].way(source, dest);
-                if (occupiedWay(steps)) {
+           //     if (occupiedWay(steps)) {
                     if (steps.length > 0 && steps[steps.length - 1].equals(dest)) {
                         rst = true;
                         this.figures[index] = this.figures[index].copy(dest);
                     }
-                } else {
-                    throw new OccupiedWayException("The is ouccupieted!!!");
-                }
+             //   } else {
+              //      throw new OccupiedWayException("The is ouccupieted!!!");
+              //  }
             } else {
                 throw new FigureNotFoundException("The figure not found!!!");
             }
@@ -46,7 +46,7 @@ public class Logic {
         }
         return rst;
     }
-
+/*
     public boolean occupiedWay(Cell[] steps) {
         boolean place = true;
 
@@ -59,7 +59,7 @@ public class Logic {
         }
         return place;
     }
-
+*/
     public void clean() {
         for (int position = 0; position != this.figures.length; position++) {
             this.figures[position] = null;
