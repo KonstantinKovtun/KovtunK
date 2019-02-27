@@ -39,7 +39,7 @@ public class BishopBlack implements Figure {
 
     public boolean isDiagonal(Cell source, Cell dest) throws ImpossibleMoveException {
         if (Math.abs(dest.x - source.x) != Math.abs(dest.y - source.y)) {
-            throw new ImpossibleMoveException("The figure cannot moves");
+            throw new ImpossibleMoveException("The figure cannot moves!!!");
         }
         return true;
     }

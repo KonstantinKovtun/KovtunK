@@ -2,6 +2,7 @@ package ru.job4j.chess.figures.black;
 
 import ru.job4j.chess.figures.Cell;
 import ru.job4j.chess.figures.Figure;
+import ru.job4j.chess.figures.ImpossibleMoveException;
 
 import java.util.Arrays;
 
@@ -24,7 +25,7 @@ public class QeenBlack implements Figure {
     }
 
     @Override
-    public Cell[] way(Cell source, Cell dest) {
+    public Cell[] way(Cell source, Cell dest) throws ImpossibleMoveException {
         Cell[] steps;
         int deltaX = (dest.x - source.x) < 0 ? -1 : 1;
         int deltaY = (dest.y - source.y) < 0 ? -1 : 1;
@@ -43,10 +44,9 @@ public class QeenBlack implements Figure {
             }
         } else {
             if (diffX != 0 & diffY == 0) {
-                len = Math.abs(diffX) + 1;
-            }
-            if (diffY != 0 & diffX == 0) {
-                len = Math.abs(diffY) + 1;
+                len = Math.abs(diffX);
+            } else {
+                len = Math.abs(diffY);
             }
 
             steps = new Cell[len];
@@ -54,28 +54,30 @@ public class QeenBlack implements Figure {
             if (diffX != 0 & diffY == 0) {
                 if (diffX < 0) {
                     for (int i = 0; i < len; i++) {
-                        counter = 8 * (source.x + i) + (source.y);
+                        counter = 8 * (source.x + i + 1) + (source.y);
                         steps[i] = Cell.values()[counter];
                     }
                 } else {
                     for (int i = 0; i < len; i++) {
-                        counter = 8 * (source.x - i) + (source.y);
+                        counter = 8 * (source.x - i - 1) + (source.y);
                         steps[i] = Cell.values()[counter];
                     }
                 }
             } else if (diffY != 0 & diffX == 0) {
                 if (diffY < 0) {
                     for (int i = 0; i < len; i++) {
-                        counter = 8 * (source.x) + (source.y + i);
+                        counter = 8 * (source.x) + (source.y + i + 1);
                         steps[i] = Cell.values()[counter];
                     }
                 } else {
                     for (int i = 0; i < len; i++) {
-                        counter = 8 * (source.x) + (source.y - i);
+                        counter = 8 * (source.x) + (source.y - i - 1);
                         steps[i] = Cell.values()[counter];
                     }
                 }
             }
+        } if (diffX != 0 & diffY != 0) {
+            throw new ImpossibleMoveException("The figure cannot moves!!!");
         }
         way = Arrays.copyOf(steps, steps.length);
 

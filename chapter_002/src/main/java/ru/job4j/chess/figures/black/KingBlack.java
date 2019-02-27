@@ -2,6 +2,7 @@ package ru.job4j.chess.figures.black;
 
 import ru.job4j.chess.figures.Cell;
 import ru.job4j.chess.figures.Figure;
+import ru.job4j.chess.figures.ImpossibleMoveException;
 
 /**
  *
@@ -22,7 +23,7 @@ public class KingBlack implements Figure {
     }
 
     @Override
-    public Cell[] way(Cell source, Cell dest) {
+    public Cell[] way(Cell source, Cell dest) throws ImpossibleMoveException {
         Cell[] steps = new Cell[0];
 
         if ((source.y == dest.y + 1 && source.x == dest.x)
@@ -34,6 +35,8 @@ public class KingBlack implements Figure {
                 || (source.y == dest.y + 1 && source.x == dest.x - 1)
                 || (source.y == dest.y + 1 && source.x == dest.x + 1)) {
             steps = new Cell[] {dest};
+        } else {
+            throw new ImpossibleMoveException("The figure cannot moves!!!");
         }
         return steps;
     }

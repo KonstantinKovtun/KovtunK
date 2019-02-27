@@ -2,6 +2,7 @@ package ru.job4j.chess.figures.black;
 
 import org.junit.Test;
 import ru.job4j.chess.figures.Cell;
+import ru.job4j.chess.figures.ImpossibleMoveException;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -15,12 +16,16 @@ import static org.junit.Assert.assertThat;
  * @since 0.1
  */
 public class RookBlackTest {
+
     @Test
-    public void whenStepOneThenStepTwo()  {
+    public void whenStepOneThenStepTwo() {
         RookBlack pawnBlack = new RookBlack(Cell.A8);
         Cell[] result = new Cell[5];
-        int length = result.length;
-        result = pawnBlack.way(Cell.A8, Cell.A3);
+        try {
+            result = pawnBlack.way(Cell.A8, Cell.A3);
+        } catch (ImpossibleMoveException ex) {
+            ex.getMessage();
+        }
         Cell expected = Cell.A3;
         assertThat(result[5], is(expected));
     }

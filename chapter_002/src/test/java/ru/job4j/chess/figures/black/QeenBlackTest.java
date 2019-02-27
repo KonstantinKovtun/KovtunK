@@ -16,11 +16,16 @@ import static org.junit.Assert.assertThat;
  * @since 0.1
  */
 public class QeenBlackTest {
+
     @Test
     public void whenStepOneThenStepTwo() {
         QeenBlack qeenBlack = new QeenBlack(Cell.D8);
         Cell[] result = new Cell[4];
-        result = qeenBlack.way(Cell.D6, Cell.D3);
+        try {
+            result = qeenBlack.way(Cell.D6, Cell.D3);
+        } catch (ImpossibleMoveException ex) {
+            ex.getMessage();
+        }
         Cell expected = Cell.D3;
         assertThat(result[3], is(expected));
     }

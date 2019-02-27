@@ -16,11 +16,16 @@ import static org.junit.Assert.assertThat;
  * @since 0.1
  */
 public class KingBlackTest {
+
     @Test
     public void whenStepOneThenStepTwo() {
         KingBlack kingBlack = new KingBlack(Cell.E8);
         Cell[] result = new Cell[1];
-        result = kingBlack.way(Cell.E8, Cell.E7);
+        try {
+            result = kingBlack.way(Cell.E8, Cell.E7);
+        } catch (ImpossibleMoveException ex) {
+            ex.getMessage();
+        }
         Cell expected = Cell.E7;
         assertThat(result[0], is(expected));
     }

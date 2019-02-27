@@ -2,6 +2,7 @@ package ru.job4j.chess.figures.black;
 
 import ru.job4j.chess.figures.Cell;
 import ru.job4j.chess.figures.Figure;
+import ru.job4j.chess.figures.ImpossibleMoveException;
 
 /**
  *
@@ -22,10 +23,12 @@ public class PawnBlack implements Figure {
     }
 
     @Override
-    public Cell[] way(Cell source, Cell dest) {
+    public Cell[] way(Cell source, Cell dest) throws ImpossibleMoveException {
         Cell[] steps = new Cell[0];
         if (source.y == dest.y + 1 && source.x == dest.x) {
             steps = new Cell[] {dest};
+        } else {
+            throw new ImpossibleMoveException("The figure cannot moves");
         }
         return steps;
     }

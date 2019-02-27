@@ -16,6 +16,7 @@ import static org.junit.Assert.assertThat;
  * @since 0.1
  */
 public class BishopBlackTest {
+
     @Test
     public void whenStepOneThenStepTwo() {
         BishopBlack bishopBlack = new BishopBlack(Cell.C8);
