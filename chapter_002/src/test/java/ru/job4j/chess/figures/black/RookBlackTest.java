@@ -27,6 +27,6 @@ public class RookBlackTest {
             ex.getMessage();
         }
         Cell expected = Cell.A3;
-        assertThat(result[5], is(expected));
+        assertThat(result[4], is(expected));
     }
 }

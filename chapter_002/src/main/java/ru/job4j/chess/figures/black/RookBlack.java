@@ -7,26 +7,43 @@ import ru.job4j.chess.figures.ImpossibleMoveException;
 import java.util.Arrays;
 
 /**
- *
+ * Class RookBlack. This class describe the behavior of the figure.
  * @author Kovtun Konstantin (kovtun.kostya@gmail.com)
  * @version $Id$
  * @since 0.1
  */
 public class RookBlack implements Figure {
+
+    /**
+     * The position contains the coordinate.
+     */
     private final Cell position;
 
+    /**
+     * The constructor RookBlack. Build the object figure RookBlack.
+     * @param position the steps of figure.
+     */
     public RookBlack(final Cell position) {
         this.position = position;
     }
 
+    /**
+     * Method position. This method return the current position of figure.
+     * @return position return the positions.
+     */
     @Override
     public Cell position() {
         return this.position;
     }
 
+    /**
+     * Method way. This method checks if the figure can move.
+     * @param source the current position of the figure.
+     * @param dest the cell where the figure should go.
+     * @return way returns the array which contains steps.
+     */
     @Override
     public Cell[] way(Cell source, Cell dest) throws ImpossibleMoveException {
-
         int diffX = source.x - dest.x;
         int diffY = source.y - dest.y;
         int len = 0;
@@ -66,7 +83,8 @@ public class RookBlack implements Figure {
                     steps[i] = Cell.values()[counter];
                 }
             }
-        } if (diffY != 0 & diffX != 0) {
+        }
+        if (diffY != 0 & diffX != 0) {
             throw new ImpossibleMoveException("The figure cannot moves");
         }
         way = Arrays.copyOf(steps, steps.length);
@@ -74,6 +92,11 @@ public class RookBlack implements Figure {
         return way;
     }
 
+    /**
+     * Method copy. This method copies the position of figure.
+     * @param dest the position of the figure.
+     * @return figure the new step of figure.
+     */
     @Override
     public Figure copy(Cell dest) {
         return new RookBlack(dest);

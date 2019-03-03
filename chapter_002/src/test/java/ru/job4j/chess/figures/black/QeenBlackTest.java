@@ -20,13 +20,13 @@ public class QeenBlackTest {
     @Test
     public void whenStepOneThenStepTwo() {
         QeenBlack qeenBlack = new QeenBlack(Cell.D8);
-        Cell[] result = new Cell[4];
+        Cell[] result = new Cell[3];
         try {
             result = qeenBlack.way(Cell.D6, Cell.D3);
         } catch (ImpossibleMoveException ex) {
             ex.getMessage();
         }
         Cell expected = Cell.D3;
-        assertThat(result[3], is(expected));
+        assertThat(result[2], is(expected));
     }
 }

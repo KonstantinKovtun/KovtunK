@@ -7,23 +7,41 @@ import ru.job4j.chess.figures.ImpossibleMoveException;
 import java.util.Arrays;
 
 /**
- *
- * @author Kovtun Konstantin (kovtun.kostya@gmail.com)
+ * Class QeenBlack. This class describe the behavior of the figure.
+ * @author Konstantin Kovtun (kovtun.kostya@gmail.com)
  * @version $Id$
  * @since 0.1
  */
 public class QeenBlack implements Figure {
+
+    /**
+     * The position contains the coordinate.
+     */
     private final Cell position;
 
+    /**
+     * The constructor QeenBlack. Build the object figure RookBlack.
+     * @param position the steps of figure.
+     */
     public QeenBlack(final Cell position) {
         this.position = position;
     }
 
+    /**
+     * Method position. This method return the current position of figure.
+     * @return position return the positions.
+     */
     @Override
     public Cell position() {
         return this.position;
     }
 
+    /**
+     * Method way. This method checks if the figure can move.
+     * @param source the current position of the figure.
+     * @param dest the cell where the figure should go.
+     * @return way returns the array which contains steps.
+     */
     @Override
     public Cell[] way(Cell source, Cell dest) throws ImpossibleMoveException {
         Cell[] steps;
@@ -76,7 +94,8 @@ public class QeenBlack implements Figure {
                     }
                 }
             }
-        } if (diffX != 0 & diffY != 0) {
+        }
+        if (!((diffX == 0 && diffY != 0) || (diffX != 0 && diffY == 0) || impossibleMoveBishop(source, dest))) {
             throw new ImpossibleMoveException("The figure cannot moves!!!");
         }
         way = Arrays.copyOf(steps, steps.length);
@@ -84,6 +103,12 @@ public class QeenBlack implements Figure {
         return way;
     }
 
+    /**
+     * Method impossibleMoveBishop. This checks if figure can move.
+     * @param source start point of current figure.
+     * @param dest the cell where the figure should go.
+     * @return true is figure can make step.
+     */
     public boolean impossibleMoveBishop(Cell source, Cell dest) {
         boolean rst = false;
 
@@ -93,6 +118,11 @@ public class QeenBlack implements Figure {
         return rst;
     }
 
+    /**
+     * Method copy. This method copies the position of figure.
+     * @param dest the position of the figure.
+     * @return figure the new step of figure.
+     */
     @Override
     public Figure copy(Cell dest) {
         return new QeenBlack(dest);
