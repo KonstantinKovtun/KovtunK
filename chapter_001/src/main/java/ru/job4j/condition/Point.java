@@ -15,15 +15,15 @@ public class Point {
      * Method construct. Initializes the object by default values.
 	 * @param x, x value.
 	 * @param y - y value.
-     * @return result of the distance.
      */
-	public  Point(int x, int y) {
+	public Point(int x, int y) {
 	  this.x = x;
 	  this.y = y;
 	}
 	
 	/**
      * Method distanceTo. Calculates the distance between two points .
+	 * @param that, the object of class Point.
      * @return result of distance.
      */
 	public double distanceTo(Point that) {

@@ -39,6 +39,7 @@ public class MenuTracker {
 
     /**
      * Метод заполняет массив.
+     * @param startUItartUI the parameter of the object StartUI.
      */
     public void fillActions(StartUI startUItartUI) {
         this.actions.add(new AddAction(0, "Add program"));

@@ -12,6 +12,7 @@ public class SortArray {
      * insertElements. Fill the elements of array.
      * @param array1, name of array.
      * @param array2, name of array.
+     * @return all return sorted array.
      */
     public int[] insertElements(int[] array1, int[] array2) {
 

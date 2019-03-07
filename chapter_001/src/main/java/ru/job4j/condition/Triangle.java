@@ -22,6 +22,9 @@ public class Triangle {
 
     /**
      * Construct the class Triangle.
+	 * @param a first point of the figure.
+	 * @param b second point of the figure.
+	 * @param c third point of the figure.
      */
 	public Triangle(Point a, Point b, Point c) {
 		this.a = a;

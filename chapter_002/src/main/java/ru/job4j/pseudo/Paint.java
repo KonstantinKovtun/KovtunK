@@ -8,8 +8,8 @@ package ru.job4j.pseudo;
  */
 public class Paint {
     /**
-     * draw. Builds differets shape.
-     * @return the shape.
+     * draw. Builds different shapes.
+     * @param shape the parameter which we use for drawing.
      */
     public void draw(Shape shape) {
         System.out.println(shape.draw());

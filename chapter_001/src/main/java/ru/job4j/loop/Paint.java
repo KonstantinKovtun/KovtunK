@@ -142,6 +142,10 @@ public class Paint {
         return screen.toString();
     }
 */
+    /**
+     * Main.
+     * @param args - args.
+     */
     public static void main(String[] args) {
         final int HEIGHT = 3;
         Paint paint = new Paint();
