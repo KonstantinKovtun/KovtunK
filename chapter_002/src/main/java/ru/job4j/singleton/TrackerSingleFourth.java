@@ -1,10 +1,5 @@
 package ru.job4j.singleton;
 
-import ru.job4j.tracker.Item;
-
-import java.util.Arrays;
-import java.util.Random;
-
 /**
  * Class TrackerSingleFourth checks how the singleton works.
  *
@@ -16,14 +11,13 @@ public class TrackerSingleFourth {
 
     /**
      * The constructor, constructs the object.
-     * @return only one object.
      */
     private TrackerSingleFourth() {
     }
 
     /**
-     * A method which returns the object go TrackerSingleFirst class.
-     * @return item, return an array of item.
+     * A method which returns the object of the TrackerSingleFirst class.
+     * @return only one object.
      */
     public static TrackerSingleFourth getInstance() {
         return Holder.INSTANCE;
@@ -34,10 +28,6 @@ public class TrackerSingleFourth {
      */
     private static final class Holder {
         private static final TrackerSingleFourth INSTANCE = new TrackerSingleFourth();
-    }
-
-    public Item add(Item model) {
-        return model;
     }
 
     /**

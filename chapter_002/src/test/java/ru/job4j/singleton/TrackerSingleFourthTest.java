@@ -1,7 +1,6 @@
 package ru.job4j.singleton;
 
 import org.junit.jupiter.api.Test;
-import ru.job4j.tracker.Item;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;

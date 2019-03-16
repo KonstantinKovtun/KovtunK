@@ -1,10 +1,5 @@
 package ru.job4j.singleton;
 
-import ru.job4j.tracker.Item;
-
-import java.util.Arrays;
-import java.util.Random;
-
 /**
  * Class TrackerSingleThird checks how the singleton works.
  *
@@ -15,29 +10,22 @@ import java.util.Random;
 public class TrackerSingleThird {
 
     /**
+     * A variable INSTANCE.
+     */
+    private static final TrackerSingleThird INSTANCE = new TrackerSingleThird();
+
+    /**
      * The constructor, constructs the object.
-     * @return only one object.
      */
     private TrackerSingleThird() {
     }
 
     /**
      * A method which returns the object go TrackerSingleThird class.
-     * @return item, return an array of item.
+     * @return TrackerSingleThird object.
      */
     public static TrackerSingleThird getInstance() {
-        return Holder.INSTANCE;
-    }
-
-    /**
-     * Class Holder.
-     */
-    private static final class Holder {
-        private static final TrackerSingleThird INSTANCE = new TrackerSingleThird();
-    }
-
-    public Item add(Item model) {
-        return model;
+        return INSTANCE;
     }
 
     /**
