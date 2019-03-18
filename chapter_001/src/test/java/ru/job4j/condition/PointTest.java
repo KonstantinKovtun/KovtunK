@@ -15,14 +15,36 @@ public class PointTest {
 
 	 
 	/**
-     * Test whenCreateOneObjectAndMeasureDistanceOnTwoObject.
-     */ @Test
-    public void whenCreateOneObjectAndMeasureDistanceOnTwoObject() {
+	 * Test whenCreateOneObjectAndMeasureDistanceOnTwoObject.
+	 */
+	@Test
+	public void whenCreateOneObjectAndMeasureDistanceOnTwoObject() {
 		Point a = new Point(0, 1);
 		Point b = new Point(3, 5);
-		
+
 		double result = a.distanceTo(b);
-		double expected = 5;		
+		double expected = 5;
 		assertThat(result, is(expected));
-    }
+	}
+
+	/**
+	 * Test whenShowInfo.
+	 */
+	@Test
+	public void whenShowInfo() {
+		Point first = new Point(1, 1);
+		first.info();
+		Point second = new Point(2, 2);
+		second.info();
+	}
+
+	/**
+	 * Test whenCheckItself.
+	 */
+	@Test
+	public void whenCheckItself() {
+		Point point = new Point(0, 0);
+		double result = point.distanceTo(point);
+		assertThat(result, is(0D));
+	}
 }

@@ -7,18 +7,25 @@ package ru.job4j.condition;
  * @since 0.1
 */
 public class Point {
-	
+
+	/**
+	 * Это поле объекта. Оно доступно только конкретному объекту.
+	 */
 	private int x;
+
+	/**
+	 * Это поле объекта. Оно доступно только конкретному объекту.
+	 */
 	private int y;
  	
 	/**
      * Method construct. Initializes the object by default values.
-	 * @param x, x value.
-	 * @param y - y value.
+	 * @param first, coordinate x.
+	 * @param second - coordinate y.
      */
-	public Point(int x, int y) {
-	  this.x = x;
-	  this.y = y;
+	public Point(int first, int second) {
+	  this.x = first;
+	  this.y = second;
 	}
 	
 	/**
@@ -27,10 +34,11 @@ public class Point {
      * @return result of distance.
      */
 	public double distanceTo(Point that) {
-		Point a = this;
-		Point b = that;
-
 		return Math.sqrt(Math.pow(that.x - this.x, 2) + Math.pow(that.y - this.y, 2));
+	}
+
+	public void info() {
+		System.out.println(String.format("Point[%s, %s]", this.x, this.y));
 	}
 	
 	/**
