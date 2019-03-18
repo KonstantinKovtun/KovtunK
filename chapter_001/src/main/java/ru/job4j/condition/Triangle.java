@@ -16,20 +16,20 @@ public class Triangle {
     /**
      * Variables which use to create class Point.
      */
-	private Point a;
-	private Point b;
-	private Point c;
+	private Point first;
+	private Point second;
+	private Point third;
 
     /**
      * Construct the class Triangle.
-	 * @param a first point of the figure.
-	 * @param b second point of the figure.
-	 * @param c third point of the figure.
+	 * @param ap first point of the figure.
+	 * @param bp second point of the figure.
+	 * @param cp third point of the figure.
      */
-	public Triangle(Point a, Point b, Point c) {
-		this.a = a;
-		this.b = b;
-		this.c = c;
+	public Triangle(Point ap, Point bp, Point cp) {
+		this.first = ap;
+		this.second = bp;
+		this.third = cp;
 	}
 
 	/**
@@ -39,13 +39,13 @@ public class Triangle {
 	 * <p>
 	 * (ab + ac + bc) / 2
 	 *
-	 * @param ab distance between points a b
-	 * @param ac distance between points a c
-	 * @param bc distance between points b c
+	 * @param a distance between points a b
+	 * @param b distance between points a c
+	 * @param c distance between points b c
 	 * @return Perimeter.
 	 */
-	public double period(double ab, double ac, double bc) {
-		return (ab + ac + bc) / PERIMETER;
+	public double period(double a, double b, double c) {
+		return (a + b + c) / PERIMETER;
 	}
 
 	/**
@@ -55,13 +55,13 @@ public class Triangle {
 	 */
 	public double area() {
 		double rsl = -1;
-		double ab = this.a.distanceTo(this.b);
-		double ac = this.a.distanceTo(this.c);
-		double bc = this.b.distanceTo(this.c);
-		double p = this.period(ab, ac, bc);
+		double a = this.first.distanceTo(this.second);
+		double b = this.first.distanceTo(this.third);
+		double c = this.second.distanceTo(this.third);
+		double p = this.period(a, b, c);
 
-		if (this.exist(ab, ac, bc)) {
-			rsl = Math.sqrt(this.period(ab, ac, bc) * (this.period(ab, ac, bc) - ab) * (this.period(ab, ac, bc) - ac) * (this.period(ab, ac, bc) - bc));
+		if (this.exist(a, c, b)) {
+			rsl = Math.sqrt(this.period(a, b, c) * (this.period(a, b, c) - a) * (this.period(a, b, c) - b) * (this.period(a, b, c) - c));
 		}
 
 		return rsl;
@@ -71,13 +71,13 @@ public class Triangle {
 	 * The method checks whether it is possible to construct a triangle with such lengths of sides.
 	 * <p>
 	 *
-	 * @param ab Length from point a to b.
-	 * @param ac Length from point a to c.
-	 * @param bc Length from point b to c.
+	 * @param a Length from point a to b.
+	 * @param c Length from point a to c.
+	 * @param b Length from point b to c.
 	 * @return the boolean result.
 	 */
-	private boolean exist(double ab, double ac, double bc) {
-		return (ab + bc > ac) && (bc + ac > ab) && (ac + ab > bc);
+	private boolean exist(double a, double c, double b) {
+		return (a + b > c) && (b + c > a) && (c + a > b);
 	}
 
 	public static void main(String[] args) {
