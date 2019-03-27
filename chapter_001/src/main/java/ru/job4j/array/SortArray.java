@@ -16,16 +16,17 @@ public class SortArray {
      */
     public int[] insertElements(int[] array1, int[] array2) {
 
-        int[] ara = {1, 4, 3, 2};
-        int[] bbb = {65, 5, 0, 29};
-        //int[] all = new int[ara.length + bbb.length];
-        int[] all = {1, 2, 3, 4};
+        int[] all = new int[array1.length + array2.length];
+
+        System.arraycopy(array1, 0, all, 0, array1.length);
+        System.arraycopy(array2, 0, all, array1.length, array2.length);
+
         return all;
     }
 
     public static void main(String[] args) {
-        int[] ara1 = {1, 2};
-        int[] ara2 = {3, 4};
+        int[] ara1 = {7, 6};
+        int[] ara2 = {0, 3};
 
         SortArray sortArray = new SortArray();
         System.out.println(Arrays.toString(sortArray.insertElements(ara1, ara2)));
