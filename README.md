@@ -6,3 +6,5 @@ https://github.com/KonstantinKovtun/KovtunK/commits/master
 А так же, записаться на курсы прокачки внутреннего состояния, аклони.
 
 I am learing java. I'll be java developer in future. Go.
+
+В курсе производилась работа с ветках git.
