@@ -6,3 +6,5 @@ https://github.com/KonstantinKovtun/KovtunK/commits/master
 А так же, записаться на курсы прокачки внутреннего состояния, аклони.
 
 I am learing java. I'll be java developer in future. Go.
+
+3. Объединение нескольких коммитов.#33084
