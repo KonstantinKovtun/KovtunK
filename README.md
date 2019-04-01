@@ -8,3 +8,4 @@ https://github.com/KonstantinKovtun/KovtunK/commits/master
 I am learing java. I'll be java developer in future. Go.
 
 3. Объединение нескольких коммитов.#33084
+В курсе производилась работа с ветках git.
