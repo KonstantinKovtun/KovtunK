@@ -35,7 +35,7 @@ public class Max {
         final int THIRD_VALUE = 35;
 
         Max maxV = new Max();
-
+        
         System.out.println(maxV.max(MAX_VALUE, MIN_VALUE));
         System.out.println(maxV.max(MAX_VALUE, MIN_VALUE, THIRD_VALUE));
     }
