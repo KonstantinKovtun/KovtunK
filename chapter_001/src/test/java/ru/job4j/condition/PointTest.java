@@ -13,7 +13,6 @@ import static org.junit.Assert.assertThat;
 */
 public class PointTest {
 
-	 
 	/**
 	 * Test whenCreateOneObjectAndMeasureDistanceOnTwoObject.
 	 */
@@ -24,6 +23,19 @@ public class PointTest {
 
 		double result = a.distanceTo(b);
 		double expected = 5;
+		assertThat(result, is(expected));
+	}
+
+	/**
+	 * Test whenCreateOneObjectAndMeasureDistanceOnTwoObject.
+	 */
+	@Test
+	public void whenCreateOneObjectAndMeasureDistanceOnThreeObject() {
+		Point a = new Point(0, 2);
+		Point c = new Point(3, 4, 6);
+
+		double result = a.distance3d(c);
+		double expected = 7;
 		assertThat(result, is(expected));
 	}
 
