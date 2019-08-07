@@ -7,23 +7,31 @@ import java.util.Arrays;
  *
  * @author Kovtun Konstantin (kovtun.kostya@gmail.com).
  * @version $Id$
- * @since 03.03.2019.
+ * @since 04.08.2019.
  */
 public class CoffeeMachine {
 
+    /**
+     * Contains numeric of coints.
+     */
+    private static final int[] coints = {10, 5, 2, 1};
+
+    /**
+     * Method changes.
+     * @param value Your number of coins which you put in.
+     * @param price Cup of coffee  price.
+     * @return the array returns charge.
+     */
     public int[] changes(int value, int price) {
-
         int returnMoney = value - price;
-
         int[] res = new int[5];
-        int[] coints = {10, 5, 2, 1};
         int count = 0;
 
-        for (int i = 0; i < coints.length; i++) {
+        for (int i = 0; i < this.coints.length; i++) {
             while (returnMoney > 0) {
-                if (returnMoney >= coints[i]) {
-                    res[count] = coints[i];
-                    returnMoney -= coints[i];
+                if (returnMoney >= this.coints[i]) {
+                    res[count] = this.coints[i];
+                    returnMoney -= this.coints[i];
                     count++;
                 } else {
                     break;
