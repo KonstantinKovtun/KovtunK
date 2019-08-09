@@ -12,9 +12,9 @@ import java.util.Arrays;
 public class CoffeeMachine {
 
     /**
-     * Contains numeric of coints.
+     * Contains numeric of coins.
      */
-    private static final int[] coints = {10, 5, 2, 1};
+    private static final int[] coins = {10, 5, 2, 1};
 
     /**
      * Method changes.
@@ -27,11 +27,11 @@ public class CoffeeMachine {
         int[] res = new int[5];
         int count = 0;
 
-        for (int i = 0; i < this.coints.length; i++) {
+        for (int i = 0; i < this.coins.length; i++) {
             while (returnMoney > 0) {
-                if (returnMoney >= this.coints[i]) {
-                    res[count] = this.coints[i];
-                    returnMoney -= this.coints[i];
+                if (returnMoney >= this.coins[i]) {
+                    res[count] = this.coins[i];
+                    returnMoney -= this.coins[i];
                     count++;
                 } else {
                     break;
