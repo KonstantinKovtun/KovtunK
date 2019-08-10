@@ -14,7 +14,7 @@ public class CoffeeMachine {
     /**
      * Contains numeric of coins.
      */
-    private static final int[] coins = {10, 5, 2, 1};
+    private static final int[] COINS = {10, 5, 2, 1};
 
     /**
      * Method changes.
@@ -27,11 +27,11 @@ public class CoffeeMachine {
         int[] res = new int[5];
         int count = 0;
 
-        for (int i = 0; i < this.coins.length; i++) {
+        for (int i = 0; i < this.COINS.length; i++) {
             while (returnMoney > 0) {
-                if (returnMoney >= this.coins[i]) {
-                    res[count] = this.coins[i];
-                    returnMoney -= this.coins[i];
+                if (returnMoney >= this.COINS[i]) {
+                    res[count] = this.COINS[i];
+                    returnMoney -= this.COINS[i];
                     count++;
                 } else {
                     break;
