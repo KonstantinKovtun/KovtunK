@@ -27,15 +27,16 @@ public class ConvertList2Array {
         int cells = sizeOfList / rows;
         int[][] array = new int[rows][cells];
         int indexOfNewList = 0;
+        int index = 0;
+        int j = 0;
 
-        for (int[] i : array) {
-            int index = 0;
-            for (int j : i) {
-                if (indexOfNewList < list.size()) {
-                    i[index++] = list.get(indexOfNewList++);
-                }
+        for (Integer i : list) {
+            array[index][j++] = list.get(indexOfNewList++);
+            if (j == array.length) {
+                j = 0;
+                index++;
             }
         }
         return array;
     }
-}
+ }
