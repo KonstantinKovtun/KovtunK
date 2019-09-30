@@ -1,5 +1,6 @@
 package ru.job4j.list;
 
+import javax.sound.midi.Soundbank;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,5 +39,21 @@ public class ConvertList2Array {
             }
         }
         return array;
+    }
+
+    /**
+     * Method convert. The method returns the list that contains elements.
+     * @param list contains a number of an array elements.
+     * @return the ArrayList.
+     */
+    public List<Integer> convert(List<int[]> list) {
+        List<Integer> kl = new ArrayList<Integer>();
+
+        for (int[] i : list) {
+            for (int j : i) {
+                kl.add(j);
+            }
+        }
+        return kl;
     }
  }
