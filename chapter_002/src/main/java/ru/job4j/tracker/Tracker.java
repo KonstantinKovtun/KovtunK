@@ -1,7 +1,8 @@
 package ru.job4j.tracker;
 
-import java.util.Arrays;
-import java.util.Random;
+import com.sun.deploy.util.ArrayUtil;
+
+import java.util.*;
 
 /**
  * Class Tracker contains an array elements of items and also makes some operation with items.
@@ -14,11 +15,7 @@ public class Tracker {
     /**
      * An array which contains an items.
      */
-    private final Item[] items = new Item[100];
-    /**
-     * Указатель ячейки для новой заявки.
-     */
-    private int position = 0;
+    private final List<Item> items = new ArrayList<>(100);
 
     private static final Random RN = new Random();
 
@@ -30,7 +27,7 @@ public class Tracker {
      */
     public Item add(Item item) {
         item.setId(this.generatedId());
-        this.items[position++] = item;
+        this.items.add(item);
         return item;
     }
 
@@ -42,9 +39,9 @@ public class Tracker {
      * @return boolean.
      */
     public boolean replace(String id, Item item) {
-        for (int i = 0; i != this.position; i++) {
-            if (this.items[i].getId().equals(id)) {
-                this.items[i] = item;
+        for (int i = 0; i != this.items.size(); i++) {
+            if (this.items.get(i).getId().equals(id)) {
+                this.items.set(i, item);
                 item.setId(id);
                 return true;
             }
@@ -61,11 +58,10 @@ public class Tracker {
     public boolean delete(String id) {
         boolean referenceIdResult = false;
 
-        for (int i = 0; i < items.length; i++) {
-            if (this.items[i] != null) {
-                if (this.items[i].getId().equals(id)) {
-                    System.arraycopy(items, i + 1, items, i, items.length - 1 - i);
-                    position--;
+        for (int i = 0; i < items.size(); i++) {
+            if (this.items.get(i) != null) {
+                if (this.items.get(i).getId().equals(id)) {
+                    this.items.remove(i);
                     referenceIdResult = true;
                     break;
                 }
@@ -82,8 +78,9 @@ public class Tracker {
      *
      * @return boolean.
      */
-    public Item[] findAll() {
-        return Arrays.copyOf(items, position);
+
+    public List<Item> findAll() {
+        return this.items;
     }
 
     /**
@@ -92,17 +89,15 @@ public class Tracker {
      * @param key, name of items' element.
      * @return item, an array of founded items in array.
      */
-    public Item[] findByName(String key) {
-        int count = 0;
-        int index = 0;
-        Item[] result = new Item[this.position];
-        for (int i = 0; i < result.length; i++) {
-            if (this.items[i].getName().equals(key)) {
-                result[index++] = this.items[i];
-                count++;
+    public List<Item> findByName(String key) {
+        ArrayList<Item> result = new ArrayList<>();
+
+        for (int i = 0; i < this.items.size(); i++) {
+            if (this.items.get(i).getName().equals(key)) {
+                result.add(this.items.get(i));
             }
         }
-        return Arrays.copyOf(result, index);
+        return result;
     }
 
     /**

@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.List;
 
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.nullValue;
@@ -18,11 +19,17 @@ public class StartUITest {
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();
 
     @Test
+//    public void whenUserAddItemThenTrackerHasNewItemWithSameName() {
+////        Tracker tracker = new Tracker(); // создаём Tracker
+////        Input input = new StubInput(new String[]{"0", "test name", "desc", "6"}); //создаём StubInput с последовательностью действий
+////        new StartUI(input, tracker).init(); //создаём StartUI и вызываем метод init()
+////        assertThat(tracker.findAll()[0].getName(), is("test name")); // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
+////    }
     public void whenUserAddItemThenTrackerHasNewItemWithSameName() {
         Tracker tracker = new Tracker(); // создаём Tracker
         Input input = new StubInput(new String[]{"0", "test name", "desc", "6"}); //создаём StubInput с последовательностью действий
         new StartUI(input, tracker).init(); //создаём StartUI и вызываем метод init()
-        assertThat(tracker.findAll()[0].getName(), is("test name")); // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
+        assertThat(tracker.findAll().get(0).getName(), is("test name")); // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
     }
 
     @Test
@@ -52,21 +59,37 @@ public class StartUITest {
     }
 
     @Test
+//    public void whenUserGetsAllItemsThenTrackerReturnsAllItems() {
+//        Tracker tracker = new Tracker();
+//        tracker.add(new Item("1", "Name1", "desc1", 121));
+//        tracker.add(new Item("2", "Name2", "desc2", 122));
+//        tracker.add(new Item("3", "Name3", "desc3", 123));
+//        Item[] items = tracker.findAll();
+//        assertThat(tracker.findAll().length, is(3));
+//        //создаём StubInput с последовательностью действий
+//        Input input = new StubInput(new String[]{"1", "6"});
+//        //создаём StartUI и вызываем метод init()
+//        new StartUI(input, tracker).init();
+//        //проверяем какие заявки возращает класс StartUI
+//        assertThat(tracker.findAll()[0], is(items[0]));
+//        assertThat(tracker.findAll()[1], is(items[1]));
+//        assertThat(tracker.findAll()[2], is(items[2]));
+//    }
     public void whenUserGetsAllItemsThenTrackerReturnsAllItems() {
         Tracker tracker = new Tracker();
         tracker.add(new Item("1", "Name1", "desc1", 121));
         tracker.add(new Item("2", "Name2", "desc2", 122));
         tracker.add(new Item("3", "Name3", "desc3", 123));
-        Item[] items = tracker.findAll();
-        assertThat(tracker.findAll().length, is(3));
+        List<Item> items = tracker.findAll();
+        assertThat(tracker.findAll().size(), is(3));
         //создаём StubInput с последовательностью действий
         Input input = new StubInput(new String[]{"1", "6"});
         //создаём StartUI и вызываем метод init()
         new StartUI(input, tracker).init();
         //проверяем какие заявки возращает класс StartUI
-        assertThat(tracker.findAll()[0], is(items[0]));
-        assertThat(tracker.findAll()[1], is(items[1]));
-        assertThat(tracker.findAll()[2], is(items[2]));
+        assertThat(tracker.findAll().get(0), is(items.get(0)));
+        assertThat(tracker.findAll().get(1), is(items.get(1)));
+        assertThat(tracker.findAll().get(2), is(items.get(2)));
     }
 
     @Test
@@ -83,6 +106,17 @@ public class StartUITest {
     }
 
     @Test
+//    public void whenUserFindsItemByNameThenTrackerReturnsItemWithTheSameName() {
+//        Tracker tracker = new Tracker();
+//        tracker.add(new Item("1", "Name1", "desc1", 121));
+//        tracker.add(new Item("2", "Name2", "desc2", 122));
+//        tracker.add(new Item("3", "Name3", "desc3", 123));
+//        Item item = tracker.add(new Item("29", "Name_Anna", "desc 18.25", 240812018));
+//        Input input = new StubInput(new String[]{"5", item.getName(), "6"});
+//        new StartUI(input, tracker).init();
+//        //assertThat(result, is(expected));
+//        assertThat(tracker.findByName(item.getName())[0].getName(), is(item.getName()));
+//    }
     public void whenUserFindsItemByNameThenTrackerReturnsItemWithTheSameName() {
         Tracker tracker = new Tracker();
         tracker.add(new Item("1", "Name1", "desc1", 121));
@@ -92,7 +126,7 @@ public class StartUITest {
         Input input = new StubInput(new String[]{"5", item.getName(), "6"});
         new StartUI(input, tracker).init();
         //assertThat(result, is(expected));
-        assertThat(tracker.findByName(item.getName())[0].getName(), is(item.getName()));
+        assertThat(tracker.findByName(item.getName()).get(0).getName(), is(item.getName()));
     }
 
     @Before

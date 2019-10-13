@@ -21,6 +21,7 @@ public class ShowItems implements UserAction {
         for (Item items : tracker.findAll()) {
             System.out.println(items.toString());
         }
+        System.out.println();
     }
 
     @Override
