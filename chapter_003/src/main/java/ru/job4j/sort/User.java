@@ -9,23 +9,15 @@ public class User implements Comparable<User> {
             this.age = age;
         }
 
-//        public String getName() {
-//            return this.name;
-//        }
-//
-//        public int getAge() {
-//            return this.age;
-//        }
+        public String getName() {
+            return this.name;
+        }
+
+        public int getAge() {
+            return this.age;
+        }
 
         public int compareTo(User user) {
-
-//            if (this.age == user.age) {
-//                return 0;
-//            } else if(this.age < user.age) {
-//                return -1;
-//            } else {
-//                return 1;
-//            }
-            return this.name.compareTo(user.name);
+            return Integer.compare(this.age, user.age);
         }
 }

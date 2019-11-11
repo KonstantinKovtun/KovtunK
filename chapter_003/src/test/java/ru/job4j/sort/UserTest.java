@@ -13,7 +13,7 @@ public class UserTest {
         list.add(new User("Poroshenko", 54));
         list.add(new User("Kravchur", 85));
         list.add(new User("Kuchma", 81));
-        list.add(new User("Zelenkiy", 4));
+        list.add(new User("Zelenkiy", 41));
         list.add(new User("Dubilet", 34));
 
         Set<User> result = new SortUser().sort(list);
@@ -23,7 +23,7 @@ public class UserTest {
         expect.add(new User("Kravchur", 85));
         expect.add(new User("Kuchma", 81));
         expect.add(new User("Poroshenko", 54));
-        expect.add(new User("Zelenkiy", 34));
+        expect.add(new User("Zelenkiy", 41));
 
         assertThat(result, is(expect));
     }
