@@ -51,4 +51,24 @@ public class UserTest {
 
         assertThat(result, is(expect));
     }
+
+    @Test
+    public void whenSortLenghtNameAndAgeByComparator() {
+        List<User> list = new ArrayList<>();
+        List<User> expect = new ArrayList<>();
+
+        list.add(new User("Dubilet", 78));
+        list.add(new User("Poroshenko", 44));
+        list.add(new User("Poroshenko", 55));
+        list.add(new User("Dubilet", 37));
+
+        List<User> result = new SortUser().sortByAllFields(list);
+
+        expect.add(new User("Dubilet", 37));
+        expect.add(new User("Dubilet", 78));
+        expect.add(new User("Poroshenko", 44));
+        expect.add(new User("Poroshenko", 55));
+
+        assertThat(result, is(expect));
+    }
 }
