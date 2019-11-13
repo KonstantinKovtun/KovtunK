@@ -25,6 +25,6 @@ public class UserConvert {
             map.put(sr.getId(), sr);
         }
 
-        return (HashMap)map;
+        return (HashMap) map;
     }
 }

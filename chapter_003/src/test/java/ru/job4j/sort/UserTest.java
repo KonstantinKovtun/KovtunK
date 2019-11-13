@@ -6,8 +6,10 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 public class UserTest {
+
     @Test
-    public void whenListConvertToMap() {
+    public void whenSortLenghtAgeByComparable() {
+
         List<User> list = new ArrayList<>();
 
         list.add(new User("Poroshenko", 54));
@@ -24,6 +26,28 @@ public class UserTest {
         expect.add(new User("Kuchma", 81));
         expect.add(new User("Poroshenko", 54));
         expect.add(new User("Zelenkiy", 41));
+
+        assertThat(result, is(expect));
+    }
+
+    @Test
+    public void whenSortLenghtNameByComparator() {
+        List<User> list = new ArrayList<>();
+        List<User> expect = new ArrayList<>();
+
+        list.add(new User("Poroshenko", 54));
+        list.add(new User("Kravchur", 85));
+        list.add(new User("Kuchma", 81));
+        list.add(new User("Zelenkiya", 41));
+        list.add(new User("Dubilet", 34));
+
+        List<User> result = new SortUser().sortNameLength(list);
+
+        expect.add(new User("Kuchma", 81));
+        expect.add(new User("Dubilet", 34));
+        expect.add(new User("Kravchur", 85));
+        expect.add(new User("Zelenkiya", 41));
+        expect.add(new User("Poroshenko", 54));
 
         assertThat(result, is(expect));
     }
