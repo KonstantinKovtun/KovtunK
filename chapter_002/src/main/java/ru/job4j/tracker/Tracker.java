@@ -5,7 +5,7 @@ package ru.job4j.tracker;
 import java.util.*;
 
 /**
- * Class Tracker contains an array elements of items and also makes some operation with items.
+ * Class Tracker compares two   of items and also makes some operation with items.
  *
  * @author Konstantin
  * @version $Id$
