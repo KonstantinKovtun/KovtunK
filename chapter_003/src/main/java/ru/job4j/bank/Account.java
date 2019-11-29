@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Account {
     /**
-     * Anamount sum of money.
+     * Amount sum of money.
      */
     private int value;
     /**

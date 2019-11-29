@@ -33,6 +33,10 @@ public class User {
         this.name = name;
     }
 
+    public String getpassport() {
+        return this.passport;
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(name, passport);

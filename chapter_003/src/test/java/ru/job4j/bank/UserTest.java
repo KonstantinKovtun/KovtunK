@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 
 /**
@@ -22,20 +23,34 @@ public class UserTest {
      * Test whenAddNewUsers.
      */
     @Test
-    public void addUser(User user) {
-        user = new User("Mickey", "ME451296");
+    public void whenAddNewUsers() {
+        User user = new User("Mickey", "ME451296");
         Bank bank = new Bank();
-        bank.addUser(user);
+        User expect;
+        expect = bank.addUser(user);
+        assertThat(user, is(expect));
+    }
+    /**
+     * Test whenDeleteUser.
+     */
+    @Test
+    public void whenDeleteUser() {
+        User user = new User("Mickey", "ME451296");
+        Bank bank = new Bank();
+        User result, expect;
+        result = bank.addUser(user);
+        expect = bank.deleteUser(user);
         assertThat(result, is(expect));
     }
     /**
-     * Test deleteUser.
+     * Test whenAddAccountToUser.
      */
     @Test
-    public void deleteUser(User user) {
-        user = new User("Mickey", "ME451296");
+    public void whenAddAccountToUser() {
+        Account account = new Account(800, "UAH525dh");
+        User user = new User("Mickey", "ME451296");
         Bank bank = new Bank();
-        bank.addUser(user);
+        bank.addAccountToUser(user.getpassport(), account);
         assertThat(result, is(expect));
     }
 }
