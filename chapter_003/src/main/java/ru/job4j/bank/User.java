@@ -33,7 +33,7 @@ public class User {
         this.name = name;
     }
 
-    public String getpassport() {
+    public String getPassport() {
         return this.passport;
     }
 

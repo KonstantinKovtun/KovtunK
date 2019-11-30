@@ -12,6 +12,14 @@ public class Account {
      */
     private String requisites;
 
+    public int getValue() {
+        return this.value;
+    }
+
+    public String getRequisites() {
+        return this.requisites;
+    }
+
     public Account(int value, String requisites) {
         this.value = value;
         this.requisites = requisites;

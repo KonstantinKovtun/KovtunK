@@ -13,18 +13,42 @@ public class Bank {
     }
 
     public void deleteUser(User user) {
+/*
         for (Map.Entry<User, List<Account>> entry : this.users.entrySet()) {
             if (entry.getKey().equals(user)) {
                 this.users.remove(user);
             }
         }
+*/
+       this.users.remove(user);
     }
 
     public void addAccountToUser(String passport, Account account) {
         for (Map.Entry<User, List<Account>> entry : this.users.entrySet()) {
-            if (entry.getKey().getpassport().equals(passport)) {
+            if (entry.getKey().getPassport().equals(passport)) {
                 this.users.get(entry).add(account);
             }
         }
+    }
+
+    public List<Account> getUserAccounts(String passport) {
+        for (Map.Entry<User, List<Account>> entry : this.users.entrySet()) {
+            if (entry.getKey().getPassport().equals(passport)) {
+                return this.users.get(entry.getValue());
+            }
+        }
+        return null;
+    }
+
+    public void deleteAccountFromUser(String passport, Account account) {
+        for (Map.Entry<User, List<Account>> entry : this.users.entrySet()) {
+            if (entry.getKey().getPassport().equals(passport) && entry.getValue().equals(account)) {
+                this.users.remove(account);
+            }
+        }
+    }
+
+    public boolean transferMoney(String srcPassport, String srcRequisite, String destPassport, String dstRequisite, double amount) {
+        return false;
     }
 }
