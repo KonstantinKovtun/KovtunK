@@ -24,17 +24,28 @@ public class Bank {
     }
 
     public void addAccountToUser(String passport, Account account) {
+        this.users = new HashMap<User, List<Account>>();
+        User user1 = new User("Tommy", "TFG888888");
+        List<Account> list = new ArrayList<>();
+        list.add(account);
+        users.put(user1, list);
         for (Map.Entry<User, List<Account>> entry : this.users.entrySet()) {
             if (entry.getKey().getPassport().equals(passport)) {
-                this.users.get(entry).add(account);
+                entry.setValue(list);
             }
         }
     }
 
     public List<Account> getUserAccounts(String passport) {
+        this.users = new HashMap<User, List<Account>>();
+        User user1 = new User("Mickey", "ME451296");
+        List<Account> list = new ArrayList<>();
+        list.add(new Account(800, "UAH525dh"));
+        users.put(user1, list);
+
         for (Map.Entry<User, List<Account>> entry : this.users.entrySet()) {
             if (entry.getKey().getPassport().equals(passport)) {
-                return this.users.get(entry.getValue());
+                return entry.getValue();
             }
         }
         return null;
