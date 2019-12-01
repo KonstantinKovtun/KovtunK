@@ -6,20 +6,22 @@ public class Account {
     /**
      * Amount sum of money.
      */
-    private int value;
+    private double value;
     /**
      * A requisites of user.
      */
     private String requisites;
 
-    public int getValue() {
+    public double getValue() {
         return this.value;
+    }
+    public void setValue(Double value) {
+        this.value = value;
     }
 
     public String getRequisites() {
         return this.requisites;
     }
-
     public Account(int value, String requisites) {
         this.value = value;
         this.requisites = requisites;

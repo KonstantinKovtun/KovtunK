@@ -24,15 +24,15 @@ public class User {
         User user = (User) o;
         return Objects.equals(name, user.name) && Objects.equals(passport, user.passport);
     }
-
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
-
+    public void setPassport(String passport) {
+        this.passport = passport;
+    }
     public String getPassport() {
         return this.passport;
     }

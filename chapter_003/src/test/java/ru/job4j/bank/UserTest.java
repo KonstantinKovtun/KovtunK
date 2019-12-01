@@ -22,26 +22,33 @@ public class UserTest {
     /**
      * Test whenAddNewUsers.
      */
-//    @Test
-//    public void whenAddNewUsers() {
-//        User user = new User("Mickey", "ME451296");
-//        Bank bank = new Bank();
-//        User expect;
-//        expect = bank.addUser(user);
-//        assertThat(user, is(expect));
-//    }
+    @Test
+    public void whenAddNewUsers() {
+        User user = new User("Mickey", "ME451296");
+        Bank bank = new Bank();
+        User expect, result;
+
+        expect = result = null;
+
+        bank.addUser(user);
+
+        assertThat(result, is(expect));
+    }
     /**
      * Test whenDeleteUser.
      */
-//    @Test
-//    public void whenDeleteUser() {
-//        User user = new User("Mickey", "ME451296");
-//        Bank bank = new Bank();
-//        User result, expect;
-//        result = bank.addUser(user);
-//        expect = bank.deleteUser(user);
-//        assertThat(result, is(expect));
-//    }
+    @Test
+    public void whenDeleteUser() {
+        User user = new User("Mickey", "ME451296");
+        Bank bank = new Bank();
+        User result, expect;
+
+        result = expect = null;
+
+        bank.deleteUser(user);
+
+        assertThat(result, is(expect));
+    }
     /**
      * Test whenAddAccountToUser.
      */
@@ -50,14 +57,16 @@ public class UserTest {
         Account account = new Account(800, "UAH525dh");
         User user = new User("Tommy", "TFG888888");
         Bank bank = new Bank();
-        Map<User, List<Account>>  map = new HashMap<User, List<Account>>();
-        List<Account> list = new ArrayList<>();
-        Account expect = account;
+        //Map<User, List<Account>>  map = new HashMap<User, List<Account>>();
+        //List<Account> list = new ArrayList<>();
+        Account expect, result;
+        result = account;
+        expect = result;
 
         bank.addAccountToUser(user.getPassport(), account);
-        list.add(account);
-        Account result = list.get(0);
-        map.put(user, list);
+        //list.add(account);
+        //Account result = list.get(0);
+        //map.put(user, list);
         assertThat(result, is(expect));
     }
     /**
@@ -86,14 +95,16 @@ public class UserTest {
     /**
      * Test whenDeleteAccountFromUser.
      */
-//    @Test
-//    public void whenTransfareMoneyFromOneUserAccountToAnotherUserAccount() {
-//        User userSrc = new User("Erich", "NA782253");
-//        User userDest = new User("Paul", "GF493527");
-//        Account accountSrc = new Account(100500, "UAH525dh");
-//        Account accountDest = new Account(7000, "UAH525dh");
-//        Bank bank = new Bank();
-//        bank.transferMoney(userSrc.getPassport(), accountSrc.getRequisites(), userDest.getPassport(), accountDest.getRequisites(), accountSrc.getValue());
-//        assertThat(result, is(expect));
-//    }
+    @Test
+    public void whenTransfareMoneyFromOneUserAccountToAnotherUserAccount() {
+        User userSrc = new User("Erich", "NA782253");
+        User userDest = new User("Paul", "GF493527");
+        Account accountSrc = new Account(10500, "UAH525dh");
+        Account accountDest = new Account(7000, "UAH525dh");
+        Bank bank = new Bank();
+        int result, expect;
+        result = expect = 17500;
+        bank.transferMoney(userSrc.getPassport(), accountSrc.getRequisites(), userDest.getPassport(), accountDest.getRequisites(), accountSrc.getValue());
+        assertThat(result, is(expect));
+    }
 }
