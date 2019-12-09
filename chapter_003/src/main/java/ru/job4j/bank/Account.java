@@ -2,6 +2,12 @@ package ru.job4j.bank;
 
 import java.util.Objects;
 
+/**
+ * Account contains on.
+ * @author Kovtun Konstantin (kovtun.kostya@gmail.com)
+ * @version $Id$
+ * @since 0.1
+ */
 public class Account {
     /**
      * Amount sum of money.

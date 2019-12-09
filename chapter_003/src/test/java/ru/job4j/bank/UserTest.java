@@ -78,8 +78,17 @@ public class UserTest {
         Account account = new Account(800, "UAH525dh");
         Account expect = account;
         Bank bank = new Bank();
+        int count = 0;
+
         List<Account> result = bank.getUserAccounts(user.getPassport());
-        assertThat(result.get(0), is(expect));
+
+        for (int i = 0; i < result.size(); i++) {
+            if (result.get(i).equals(account)) {
+                count = i;
+                break;
+            }
+        }
+        assertThat(result.get(count), is(expect));
     }
     /**
      * Test whenDeleteAccountFromUser.
@@ -100,7 +109,7 @@ public class UserTest {
         User userSrc = new User("Erich", "NA782253");
         User userDest = new User("Paul", "GF493527");
         Account accountSrc = new Account(10500, "UAH525dh");
-        Account accountDest = new Account(7000, "UAH525dh");
+        Account accountDest = new Account(7000, "SSD111fh");
         Bank bank = new Bank();
         int result, expect;
         result = expect = 17500;
