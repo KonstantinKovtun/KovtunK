@@ -50,7 +50,7 @@ public class Bank {
 
         for (Map.Entry<User, List<Account>> entry : this.usersAccounts.entrySet()) {
             if (entry.getKey().getPassport().equals(passport)) {
-                for (Account userAccount : entry.getValue()){
+                for (Account userAccount : entry.getValue()) {
                     if (userAccount.getRequisites().equals(account.getRequisites())) {
                         return;
                     }
