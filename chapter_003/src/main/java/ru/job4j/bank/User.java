@@ -4,6 +4,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+/**
+ * Class User. This class contains information about bank user.
+ * @author Kovtun Konstantin (kovtun.kostya@gmail.com)
+ * @version $Id$
+ * @since 0.1
+ */
 public class User {
     private String name;
     private String passport;
