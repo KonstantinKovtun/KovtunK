@@ -19,7 +19,7 @@ public class Departments {
         }
 
         for (int i = 0; i < tmp.size(); i++) {
-            if (! tmp.contains("k1")) {
+            if (!tmp.contains("k1")) {
                 tmp.add("k1");
             } else if (!tmp.contains("k1/sk1")) {
                 tmp.add("k1/sk1");
@@ -27,6 +27,7 @@ public class Departments {
                 tmp.remove("sk1");
             }
         }
+        sortAsc(new ArrayList<>(tmp));
 
         return new ArrayList<>(tmp);
     }
