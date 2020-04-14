@@ -6,23 +6,17 @@ import java.util.List;
 
 public class Departments {
 
-    public static List<String> fillGaps(List<String> deps) {//deps ="k1/sk1"
+    public static List<String> fillGaps(List<String> deps) {
 
         HashSet<String> tmp = new HashSet<>();
-        List<String> str = new ArrayList<String>();
-        str.add("k1/sk1");
-        str.add("/asd");
-        str.add("ff/d");
-        str.add("dj/skdjsk");
+        String name = "";
 
-        for (String value : str) {
+        for (String value : deps) {
             String start = "";
-            int k = 0 ;
-//            for (String el : value.split("/")) {
-//                 tmp.add(start + el);
-//            }
-            for (int i = 0; i < str.size(); i++) {
-                k = str.indexOf("k1");
+            for (String el : value.split("/")) {
+               // start = start.isBlank() ? el : start + "/" + el;
+                 //tmp.add(start + el);
+                tmp.add(start);
             }
         }
 
