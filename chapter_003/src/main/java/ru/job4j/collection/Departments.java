@@ -9,26 +9,32 @@ public class Departments {
     public static List<String> fillGaps(List<String> deps) {//deps ="k1/sk1"
 
         HashSet<String> tmp = new HashSet<>();
-        for (String value : deps) {
+        List<String> str = new ArrayList<String>();
+        str.add("k1/sk1");
+        str.add("/asd");
+        str.add("ff/d");
+        str.add("dj/skdjsk");
+
+        for (String value : str) {
             String start = "";
-            for (String el : value.split("/")) {
-                 tmp.add(start + el);
-                if (tmp.contains("sk1")) {
-                    tmp.add("k1/sk1");
-                    tmp.remove("sk1");
-                }
+            int k = 0 ;
+//            for (String el : value.split("/")) {
+//                 tmp.add(start + el);
+//            }
+            for (int i = 0; i < str.size(); i++) {
+                k = str.indexOf("k1");
             }
         }
 
-//        for (int i = 0; i < tmp.size(); i++) {
-//            if (!tmp.contains("k1")) {
-//                tmp.add("k1");
-//            } else if (!tmp.contains("k1/sk1")) {
-//                tmp.add("k1/sk1");
-//            } else if (tmp.contains("sk1")) {
-//                tmp.remove("sk1");
-//            }
-//        }
+        for (int i = 0; i < tmp.size(); i++) {
+            if (!tmp.contains("k1")) {
+                tmp.add("k1");
+            } else if (!tmp.contains("k1/sk1")) {
+                tmp.add("k1/sk1");
+            } else if (tmp.contains("sk1")) {
+                tmp.remove("sk1");
+            }
+        }
         sortAsc(new ArrayList<>(tmp));
 
         return new ArrayList<>(tmp);
