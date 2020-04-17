@@ -16,9 +16,11 @@ public class Departments {
             }
         }
 
-        sortAsc((new ArrayList<>(tmp)));
+        List<String> list = new ArrayList<>(tmp);
 
-        return new ArrayList<>(tmp);
+        sortAsc(list);
+
+        return (list);
     }
 
     public static void sortAsc(List<String> orgs) {
@@ -26,6 +28,6 @@ public class Departments {
     }
 
     public static void sortDesc(List<String> orgs) {
-        Collections.reverseOrder();
+        Collections.sort(orgs);
     }
 }
