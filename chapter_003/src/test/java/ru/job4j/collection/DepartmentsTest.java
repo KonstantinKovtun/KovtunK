@@ -37,7 +37,7 @@ public class DepartmentsTest {
     }
 
     /**
-     * Test whenNonChange.
+     * Test whenSortAscending.
      */
     @Test
     public void whenSortAscending() {
@@ -62,6 +62,37 @@ public class DepartmentsTest {
                 "k2/sk1",
                 "k2/sk1/ssk1",
                 "k2/sk1/ssk2"
+        );
+        List<String> result = Departments.fillGaps(input);
+        assertThat(result, is(expect));
+    }
+
+    /**
+     * Test whenSortDescending.
+     */
+    @Test
+    public void whenSortDescending() {
+        List<String> input = Arrays.asList(
+                "k1",
+                "k1/sk1",
+                "k1/sk1/ssk1",
+                "k1/sk1/ssk2",
+                "k1/sk2",
+                "k2",
+                "k2/sk1",
+                "k2/sk1/ssk1",
+                "k2/sk1/ssk2"
+        );
+        List<String> expect = Arrays.asList(
+                "k2",
+                "k2/sk1",
+                "k2/sk1/ssk1",
+                "k2/sk1/ssk2",
+                "k1",
+                "k1/sk1",
+                "k1/sk1/ssk1",
+                "k1/sk1/ssk2",
+                "k1/sk2"
         );
         List<String> result = Departments.fillGaps(input);
         assertThat(result, is(expect));
