@@ -94,7 +94,7 @@ public class DepartmentsTest {
                 "k1/sk1/ssk2",
                 "k1/sk2"
         );
-        List<String> result = Departments.fillGaps(input);
-        assertThat(result, is(expect));
+        Departments.sortDesc(input);
+        assertThat(input, is(expect));
     }
 }
