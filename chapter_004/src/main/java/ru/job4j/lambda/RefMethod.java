@@ -11,7 +11,7 @@ import java.util.List;
  * @since 26.04.2020
  */
 public class RefMethod {
-    public static void main(String[] args) {//Arrays.asList - convert array in to Collection
+    public static void main(String[] args) { //Arrays.asList - convert array in to Collection
         List<String> names = Arrays.asList(
                 "Ivan",
                 "Petr Arsentev"
