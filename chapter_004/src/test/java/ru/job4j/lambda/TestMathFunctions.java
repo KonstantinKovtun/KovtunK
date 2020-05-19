@@ -43,8 +43,8 @@ public class TestMathFunctions {
     @Test
     public void whenIndicateFunctionThenIndicateResults() {
         MathFunctions function = new MathFunctions();
-        List<Double> result = function.diapason(5, 8, x -> 3 * x * x);
-        List<Double> expected = Arrays.asList(75D, 108D, 147D);
+        List<Double> result = function.diapason(5, 8, x -> Math.pow(3, x));
+        List<Double> expected = Arrays.asList(243D, 729D, 2187D);
         assertThat(result, is(expected));
     }
 }
