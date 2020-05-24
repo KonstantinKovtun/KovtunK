@@ -24,17 +24,29 @@ public class PhoneDictionary {
      */
     public List<Person> find(String key) {
 
-        Predicate<Person> combine = k -> {
-            if (k.getName().contains(key)
-            || k.getSurname().contains(key)
-            || k.getPhone().contains(key)
-            || k.getPhone().contains(key)
-            || k.getAddress().contains(key)) {
-                return true;
-            }
-            return false;
-        };
+//        Predicate<Person> combine = k -> {
+//            if (k.getName().contains(key)
+//            || k.getSurname().contains(key)
+//            || k.getPhone().contains(key)
+//            || k.getAddress().contains(key)) {
+//                return true;
+//            }
+//            return false;
+//        };
+//        Predicate<Person> name = new Predicate<Person>() {
+//            @Override
+//            public boolean test(Person person) {
+//                person.getName().contains(key);
+//                return false;
+//            }
+//        };
+        Predicate<Person> name = k -> k.getName().contains(key);
+        Predicate<Person> surname = k -> k.getSurname().contains(key);
+        Predicate<Person> phone= k -> k.getPhone().contains(key);
+        Predicate<Person> address = k -> k.getAddress().contains(key);
 
+        Predicate<Person> combine = k -> name.or(surname).or(phone).or(address);
+        
         ArrayList<Person> result = new ArrayList<>();
 
         for (Person person : persons) {
