@@ -23,16 +23,6 @@ public class PhoneDictionary {
      * @return Список подощедщих пользователей.
      */
     public List<Person> find(String key) {
-
-//        Predicate<Person> combine = k -> {
-//            if (k.getName().contains(key)
-//            || k.getSurname().contains(key)
-//            || k.getPhone().contains(key)
-//            || k.getAddress().contains(key)) {
-//                return true;
-//            }
-//            return false;
-//        };
 //        Predicate<Person> name = new Predicate<Person>() {
 //            @Override
 //            public boolean test(Person person) {
@@ -42,15 +32,15 @@ public class PhoneDictionary {
 //        };
         Predicate<Person> name = k -> k.getName().contains(key);
         Predicate<Person> surname = k -> k.getSurname().contains(key);
-        Predicate<Person> phone= k -> k.getPhone().contains(key);
+        Predicate<Person> phone = k -> k.getPhone().contains(key);
         Predicate<Person> address = k -> k.getAddress().contains(key);
+        Predicate<Person> tcombine = k -> name.or(surname).or(phone).or(address).test(k);
 
-        Predicate<Person> combine = k -> name.or(surname).or(phone).or(address);
-        
+
         ArrayList<Person> result = new ArrayList<>();
 
         for (Person person : persons) {
-            if (combine.test(person)) {
+            if (tcombine.test(person)) {
                 result.add(person);
             }
         }
