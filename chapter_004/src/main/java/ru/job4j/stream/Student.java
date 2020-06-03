@@ -49,20 +49,6 @@ public class Student {
                 '}';
     }
 
-    public static void main(String[] args) {
-        List<Student> list = new ArrayList<>(
-                Arrays.asList(
-                        new Student(85, "Pavel"),
-                        new Student(100, "Ivan"),
-                        new Student(79, "Vlad"),
-                        new Student(70, "Mike"),
-                        new Student(60, "Pet"),
-                        new Student(30, "John"),
-                        new Student(40, "Bogdan"),
-                        new Student(50, "Konstantin")
-                ));
-    }
-
     @Override
     public boolean equals(Object obj) {
         if (!(obj instanceof Student)) {
@@ -75,7 +61,8 @@ public class Student {
     }
 
     @Override
-    public int hashCode() {
+    public int hashCode()
+    {
         final int prime = 31;
         int result = 1;
         result = prime * result + score;

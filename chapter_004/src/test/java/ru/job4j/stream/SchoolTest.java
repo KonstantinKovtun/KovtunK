@@ -22,7 +22,7 @@ public class SchoolTest {
                 ));
         School school = new School();
         List<Student> result = school.collect(list, x -> x.getScore() > 70 & x.getScore() < 100);
-        List<Student> expected =                 Arrays.asList(
+        List<Student> expected = Arrays.asList(
                 new Student(85, "Pavel"),
                 new Student(79, "Vlad")
         );
