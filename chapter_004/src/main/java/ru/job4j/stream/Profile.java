@@ -20,22 +20,22 @@ public class Profile {
         return list;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (!(obj instanceof Profile)) {
-            return false;
-        }
-
-        Profile profile = (Profile) obj;
-
-        return this.getAddress().equals(profile.getAddress());
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((address == null) ? 0 : address.hashCode());
-        return result;
-    }
+//    @Override
+//    public boolean equals(Object obj) {
+//        if (!(obj instanceof Profile)) {
+//            return false;
+//        }
+//
+//        Profile profile = (Profile) obj;
+//
+//        return this.getAddress().equals(profile.getAddress());
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        final int prime = 31;
+//        int result = 1;
+//        result = prime * result + ((address == null) ? 0 : address.hashCode());
+//        return result;
+//    }
 }
