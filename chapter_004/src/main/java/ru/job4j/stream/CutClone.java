@@ -66,11 +66,28 @@ public class CutClone {
     }
 
     public static List<Address> sorted(List<Address> address) {
-        address = address.stream().sorted((o1, o2) -> o1.getCity().compareTo(o2.getCity())).
-                distinct().collect(Collectors.toCollection(ArrayList<Address>::new));
-        for (Address add : address) {
+//        address = address.stream().sorted((o1, o2) -> o1.getCity().compareTo(o2.getCity())).
+//                distinct().collect(Collectors.toCollection(ArrayList<Address>::new));
+        Profile profile = new Profile();
+        List<Profile> pr = List.of(
+                new Profile(),
+                new Profile(),
+                new Profile(),
+                new Profile(),
+                new Profile(),
+                new Profile(),
+                new Profile()
+        );
+
+        for (int i = 0; i < address.size(); i++) {
+            pr.get(i).setAddress(address.get(i));
+        }
+
+        List<Address> list = profile.collect(pr);
+
+        for (Address add : list) {
             System.out.println(add.getCity());
         }
-        return address;
+        return list;
     }
 }
