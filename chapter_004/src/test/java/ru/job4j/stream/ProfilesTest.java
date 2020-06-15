@@ -9,14 +9,14 @@ import java.util.List;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
-public class CutCloneTest {
+public class ProfilesTest {
     /**
      * Test whenInputManyAddressesOutPutAddressesWithoutDuplicates.
      */
     @Test
     public void whenInputManyAddressesOutPutAddressesWithoutDuplicates() {
-        CutClone cutClone = new CutClone();
-        List<Profile> profiles = new ArrayList<>(
+        Profiles profiles = new Profiles();
+        List<Profile> profile = new ArrayList<>(
                 Arrays.asList(
                         new Profile(),
                         new Profile(),
@@ -39,10 +39,10 @@ public class CutCloneTest {
                 ));
 
         for (int i = 0; i < address.size(); i++) {
-            profiles.get(i).setAddress(address.get(i));
+            profile.get(i).setAddress(address.get(i));
         }
 
-        List<Address> result = cutClone.sorted(profiles);
+        List<Address> result = profiles.sorted(profile);
         List<Address> expected =
                 Arrays.asList(
                         new Address("Kiev", "Petlyry", 50, 5),

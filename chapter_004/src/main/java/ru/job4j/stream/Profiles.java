@@ -3,7 +3,7 @@ package ru.job4j.stream;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CutClone {
+public class Profiles {
     public List<Address> sorted(List<Profile> profiles) {
         List<Address> list = profiles.stream()
                 .map(profile -> profile.getAddress())

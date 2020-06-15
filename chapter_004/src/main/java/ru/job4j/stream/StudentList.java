@@ -16,21 +16,15 @@ public class StudentList {
                         new Student(19, "Vika")
                 ));
 
-//        System.out.println(
-//                List.of(new Student(85, "Pavel").getSurname(), new Student(85, "Pavel"),
-//                        new Student(100, "Ivan").getSurname(), new Student(100, "Ivan"))
-//                        .stream().distinct().collect(
-//                        Collectors.toMap(
-//                                e -> e,
-//                                e -> e
-//                        ))
-//        );
-//        Map<String, Class<Student>> map;
-//        map = list.stream().
-//                collect(Collectors.toMap(Student::getSurname, ));
+        Map<String, Student> map;
+        map = list.stream()
+                .distinct()
+                .collect(Collectors.toMap(e -> e.getSurname(), e -> e));
 
-//        for (Student st : list) {
-//            st
-//        }
+        for (Map.Entry<String, Student> entry : map.entrySet()) {
+            String key = entry.getKey();
+            Student value = entry.getValue();
+            System.out.println("key = " + key + " value = " + value);
+        }
     }
 }
