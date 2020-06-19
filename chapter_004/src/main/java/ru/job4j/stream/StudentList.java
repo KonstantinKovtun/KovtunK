@@ -7,6 +7,16 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class StudentList {
+
+    public static Map<String, Student> sortMap(List<Student> list) {
+        Map<String, Student> map;
+        map = list.stream()
+                .distinct()
+                .collect(Collectors.toMap(e -> e.getSurname(), e -> e));
+
+        return map;
+    }
+
     public static void main(String[] args) {
         List<Student> list = new ArrayList<>(
                 Arrays.asList(
@@ -16,10 +26,7 @@ public class StudentList {
                         new Student(19, "Vika")
                 ));
 
-        Map<String, Student> map;
-        map = list.stream()
-                .distinct()
-                .collect(Collectors.toMap(e -> e.getSurname(), e -> e));
+        Map<String, Student> map = sortMap(list);
 
         for (Map.Entry<String, Student> entry : map.entrySet()) {
             String key = entry.getKey();
