@@ -17,9 +17,10 @@ public class StudentListTest {
                         new Student(85, "Pavel"),
                         new Student(100, "Ivan"),
                         new Student(79, "Vlad"),
-                        new Student(79, "Vlad"),
+                        new Student(33, "Vlad"),
                         new Student(19, "Vika"),
-                        new Student(19, "Vika")
+                        new Student(40, "Vika"),
+                        new Student(23, "Vika")
                 ));
 
         Map<String, Student> result = studentList.sortMap(list);
