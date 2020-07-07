@@ -1,6 +1,7 @@
 package ru.job4j.bank;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Bank makes operation with users' account.
@@ -27,7 +28,8 @@ public class Bank {
      * @param user, first value.
      */
     public void addUser(User user) {
-        this.usersAccounts.putIfAbsent(user, new ArrayList<Account>());
+        this.usersAccounts.entrySet().stream().map(m -> new ArrayList<Account>());
+//        this.usersAccounts.putIfAbsent(user, new ArrayList<Account>());
     }
 
     /**
@@ -35,7 +37,11 @@ public class Bank {
      * @param user, first value.
      */
     public void deleteUser(User user) {
-        this.usersAccounts.remove(user);
+        this.usersAccounts.entrySet().stream()
+                .filter(e -> e.equals(e))
+                .collect(Collectors.toCollection(ArrayList::new));
+//        this.usersAccounts.remove(user);
+//        this.usersAccounts.remove(e -> user.equals(e));
     }
 
     /**
@@ -48,16 +54,17 @@ public class Bank {
             return;
         }
 
-        for (Map.Entry<User, List<Account>> entry : this.usersAccounts.entrySet()) {
-            if (entry.getKey().getPassport().equals(passport)) {
-                for (Account userAccount : entry.getValue()) {
-                    if (userAccount.getRequisites().equals(account.getRequisites())) {
-                        return;
-                    }
-                    entry.getValue().add(account);
-                }
-            }
-        }
+//        for (Map.Entry<User, List<Account>> entry : this.usersAccounts.entrySet()) {
+//            if (entry.getKey().getPassport().equals(passport)) {
+//                for (Account userAccount : entry.getValue()) {
+//                    if (userAccount.getRequisites().equals(account.getRequisites())) {
+//                        return;
+//                    }
+//                    entry.getValue().add(account);
+//                }
+//            }
+//        }
+        this.usersAccounts.entrySet().stream().filter(account -> account.getRequisites()).
     }
 
     /**
