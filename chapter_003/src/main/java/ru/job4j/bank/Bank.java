@@ -3,6 +3,8 @@ package ru.job4j.bank;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static java.util.stream.Collectors.toList;
+
 /**
  * Bank makes operation with users' account.
  * @author Kovtun Konstantin (kovtun.kostya@gmail.com)
@@ -28,8 +30,7 @@ public class Bank {
      * @param user, first value.
      */
     public void addUser(User user) {
-        this.usersAccounts.entrySet().stream().map(m -> new ArrayList<Account>());
-//        this.usersAccounts.putIfAbsent(user, new ArrayList<Account>());
+        this.usersAccounts.putIfAbsent(user, new ArrayList<Account>());
     }
 
     /**
@@ -37,11 +38,7 @@ public class Bank {
      * @param user, first value.
      */
     public void deleteUser(User user) {
-        this.usersAccounts.entrySet().stream()
-                .filter(e -> e.equals(e))
-                .collect(Collectors.toCollection(ArrayList::new));
-//        this.usersAccounts.remove(user);
-//        this.usersAccounts.remove(e -> user.equals(e));
+        this.usersAccounts.remove(user);
     }
 
     /**
@@ -54,17 +51,16 @@ public class Bank {
             return;
         }
 
-//        for (Map.Entry<User, List<Account>> entry : this.usersAccounts.entrySet()) {
-//            if (entry.getKey().getPassport().equals(passport)) {
-//                for (Account userAccount : entry.getValue()) {
-//                    if (userAccount.getRequisites().equals(account.getRequisites())) {
-//                        return;
-//                    }
-//                    entry.getValue().add(account);
-//                }
-//            }
-//        }
-        this.usersAccounts.entrySet().stream().filter(account -> account.getRequisites()).
+        for (Map.Entry<User, List<Account>> entry : this.usersAccounts.entrySet()) {
+            if (entry.getKey().getPassport().equals(passport)) {
+                for (Account userAccount : entry.getValue()) {
+                    if (userAccount.getRequisites().equals(account.getRequisites())) {
+                        return;
+                    }
+                    entry.getValue().add(account);
+                }
+            }
+        }
     }
 
     /**
@@ -72,12 +68,17 @@ public class Bank {
      * @param passport, a user's passport data.
      */
     public List<Account> getUserAccounts(String passport) {
-        for (Map.Entry<User, List<Account>> entry : this.usersAccounts.entrySet()) {
-            if (entry.getKey().getPassport().equals(passport)) {
-                return entry.getValue();
-            }
-        }
-        return null;
+//        for (Map.Entry<User, List<Account>> entry : this.usersAccounts.entrySet()) {
+//            if (entry.getKey().getPassport().equals(passport)) {
+//                return entry.getValue();
+//            }
+//        }
+//        return null;
+
+        return this.usersAccounts.entrySet().stream()
+                .filter(entry -> entry.getKey().getPassport().equals(passport))
+                .map(user -> user.getValue())
+                .collect(toList());
     }
 
     /**
@@ -120,6 +121,8 @@ public class Bank {
             }
         }
         return null;
+//        List<Account> userAccounts = this.usersAccounts.entrySet().stream()
+//                .filter(passport -> passport.getValue(passport))
     }
 
     /**
