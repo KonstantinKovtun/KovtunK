@@ -75,10 +75,23 @@ public class Bank {
 //        }
 //        return null;
 
-        return this.usersAccounts.entrySet().stream()
+//        return this.usersAccounts.entrySet().stream()
+//                .filter(entry -> entry.getKey().getPassport().equals(passport))
+//                .map(user -> user.getValue())
+//                .collect(toList());
+        List<Account> list = new ArrayList<Account>();
+        User user = (User) usersAccounts.entrySet()
+                .stream()
                 .filter(entry -> entry.getKey().getPassport().equals(passport))
-                .map(user -> user.getValue())
-                .collect(toList());
+                .findFirst()
+                .orElse(null);
+        if (user != null) {
+            list = usersAccounts.get(user);
+        } else {
+            list = null;
+        }
+
+        return list;
     }
 
     /**
@@ -115,11 +128,16 @@ public class Bank {
             return null;
         }
 
-        for (int i = 0; i < userAccounts.size(); i++) {
-            if (userAccounts.get(i).getRequisites().equals(requisite)) {
-                return userAccounts.get(i);
-            }
-        }
+//        for (int i = 0; i < userAccounts.size(); i++) {
+//            if (userAccounts.get(i).getRequisites().equals(requisite)) {
+//                return userAccounts.get(i);
+//            }
+//        }
+
+        userAccounts.stream()
+                .filter(userAcc -> userAcc.getRequisites().equals(requisite))
+                //.forEach(System.out::print);
+        .collect(Collectors.toList());
         return null;
 //        List<Account> userAccounts = this.usersAccounts.entrySet().stream()
 //                .filter(passport -> passport.getValue(passport))
