@@ -75,10 +75,6 @@ public class Bank {
 //        }
 //        return null;
 
-//        return this.usersAccounts.entrySet().stream()
-//                .filter(entry -> entry.getKey().getPassport().equals(passport))
-//                .map(user -> user.getValue())
-//                .collect(toList());
         List<Account> list = new ArrayList<Account>();
         User user = (User) usersAccounts.entrySet()
                 .stream()
@@ -88,7 +84,7 @@ public class Bank {
         if (user != null) {
             list = usersAccounts.get(user);
         } else {
-            list = null;
+            list = Collections.emptyList();
         }
 
         return list;
@@ -136,11 +132,8 @@ public class Bank {
 
         userAccounts.stream()
                 .filter(userAcc -> userAcc.getRequisites().equals(requisite))
-                //.forEach(System.out::print);
-        .collect(Collectors.toList());
+                .collect(Collectors.toList());
         return null;
-//        List<Account> userAccounts = this.usersAccounts.entrySet().stream()
-//                .filter(passport -> passport.getValue(passport))
     }
 
     /**
