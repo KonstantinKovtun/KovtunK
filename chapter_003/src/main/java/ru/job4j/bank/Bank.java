@@ -68,13 +68,6 @@ public class Bank {
      * @param passport, a user's passport data.
      */
     public List<Account> getUserAccounts(String passport) {
-//        for (Map.Entry<User, List<Account>> entry : this.usersAccounts.entrySet()) {
-//            if (entry.getKey().getPassport().equals(passport)) {
-//                return entry.getValue();
-//            }
-//        }
-//        return null;
-
         List<Account> list = new ArrayList<Account>();
         User user = (User) usersAccounts.entrySet()
                 .stream()
@@ -120,20 +113,14 @@ public class Bank {
     public Account getUserAccount(String passport, String requisite) {
         List<Account> userAccounts = this.getUserAccounts(passport);
 
-        if (userAccounts == null) {
+        if (userAccounts.size() == 0) {
             return null;
         }
 
-//        for (int i = 0; i < userAccounts.size(); i++) {
-//            if (userAccounts.get(i).getRequisites().equals(requisite)) {
-//                return userAccounts.get(i);
-//            }
-//        }
-
-        userAccounts.stream()
+        return userAccounts.stream()
                 .filter(userAcc -> userAcc.getRequisites().equals(requisite))
-                .collect(Collectors.toList());
-        return null;
+                .findFirst()
+                .orElse(null);
     }
 
     /**
