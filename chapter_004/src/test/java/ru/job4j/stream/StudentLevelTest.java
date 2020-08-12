@@ -12,11 +12,11 @@ public class StudentLevelTest {
     @Test
     public void whenSorted() {
         List<Student> input = new ArrayList<>();
-        input.add(new Student(128, "Pert"));
         input.add(new Student(28, "Masha"));
+        input.add(new Student(128, "Pert"));
         List<Student> expected = List.of(
-                new Student(28, "Masha"),
-                new Student(128, "Pert")
+                new Student(128, "Pert"),
+                new Student(28, "Masha")
         );
         assertThat(StudentLevel.levelOf(input, 20), is(expected));
     }
@@ -28,8 +28,8 @@ public class StudentLevelTest {
         input.add(new Student(500, "Kenshi"));
         input.add(new Student(315, "Kenanobi"));
         List<Student> expected = List.of(
-                new Student(315, "Kenanobi"),
-                new Student(500, "Kenshi")
+                new Student(500, "Kenshi"),
+                new Student(315, "Kenanobi")
         );
         assertThat(StudentLevel.levelOf(input, 100), is(expected));
     }
