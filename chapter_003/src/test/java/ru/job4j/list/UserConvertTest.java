@@ -18,15 +18,16 @@ public class UserConvertTest {
         User user1 = new User("Poroshenko", "Kiev", 38);
         User user2 = new User("Kuchma", "Kharkiv", 30);
         User user3 = new User("Kravchuk", "Dnepr", 25);
-        List<User> list = (Arrays.asList(user1, user2, user3));
+        List<User> list = List.of(user1, user2, user3); //(Arrays.asList(user1, user2, user3));
         UserConvert userConvert = new UserConvert();
 
         HashMap<Integer, User> result = userConvert.process(list);
-        Map<Integer, User> expect = new HashMap<Integer, User>() { {
-            put(38, user1);
-            put(30, user2);
-            put(25, user3);
-        } };
+//        Map<Integer, User> expect = new HashMap<Integer, User>() { {
+//            put(38, user1);
+//            put(30, user2);
+//            put(25, user3);
+//        } };
+        Map<Integer, User> expect = Map.of(38, user1, 30, user2, 25, user3);
 
         assertThat(result, is(expect));
     }
