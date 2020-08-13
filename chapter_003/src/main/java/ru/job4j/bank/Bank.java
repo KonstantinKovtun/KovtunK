@@ -42,6 +42,23 @@ public class Bank {
     }
 
     /**
+     * findByPassport. Return user by passport.
+     * @param passport, first value.
+     */
+    public Optional<User> findByPassport(String  passport) {
+        Optional<User> rsl = Optional.empty();
+
+        for (User user : usersAccounts.keySet()) {
+            if (user.getPassport().equals(passport)) {
+                rsl = Optional.of(user);
+                break;
+            }
+        }
+
+        return rsl;
+    }
+
+    /**
      * addAccountToUser. Adds account to current user.
      * @param passport, a user's passport data.
      * @param account, a user's bill account.

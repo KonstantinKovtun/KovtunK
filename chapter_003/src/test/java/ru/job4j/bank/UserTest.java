@@ -5,8 +5,10 @@ import org.junit.Test;
 //import java.util.ArrayList;
 //import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 //import java.util.Map;
 
+import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.core.Is.is;
 //import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
@@ -26,14 +28,9 @@ public class UserTest {
     public void whenAddNewUsers() {
         User user = new User("Mickey", "ME451296");
         Bank bank = new Bank();
-        User expect, result;
-
-        expect = null;
-        result = null;
-
         bank.addUser(user);
-
-        assertThat(result, is(expect));
+        Optional<User> opt = bank.findByPassport("ME451296");
+        assertThat(opt, is(user));
     }
     /**
      * Test whenDeleteUser.
@@ -42,14 +39,9 @@ public class UserTest {
     public void whenDeleteUser() {
         User user = new User("Mickey", "ME451296");
         Bank bank = new Bank();
-        User result, expect;
-
-        result = null;
-        expect = null;
-
+        bank.addUser(user);
         bank.deleteUser(user);
-
-        assertThat(result, is(expect));
+        assertThat(bank.findByPassport("ME451296"), is(nullValue()));
     }
     /**
      * Test whenAddAccountToUser.
