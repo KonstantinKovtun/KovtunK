@@ -30,7 +30,7 @@ public class UserTest {
         Bank bank = new Bank();
         bank.addUser(user);
         Optional<User> opt = bank.findByPassport("ME451296");
-        assertThat(opt, is(user));
+        assertThat(opt.get(), is(user));
     }
     /**
      * Test whenDeleteUser.
@@ -55,7 +55,7 @@ public class UserTest {
         //List<Account> list = new ArrayList<>();
         Account expect, result;
         result = account;
-        expect = result;
+        expect = account;
 
         bank.addAccountToUser(user.getPassport(), account);
         //list.add(account);
@@ -75,28 +75,32 @@ public class UserTest {
         Bank bank = new Bank();
         int count = 0;
 
+        bank.addUser(user);
+        bank.addAccountToUser(user.getPassport(), account);
+
         List<Account> result = bank.getUserAccounts(user.getPassport());
 
-//        for (int i = 0; i < result.size(); i++) {
-//            if (result.get(i).equals(account)) {
-//                count = i;
-//                break;
-//            }
-//        }
-//        assertThat(result.get(count), is(expect));
-        assertThat(account, is(expect));
+        for (int i = 0; i < result.size(); i++) {
+            if (result.get(i).equals(account)) {
+                count = i;
+                break;
+            }
+        }
+        assertThat(result.get(count), is(expect));
     }
     /**
      * Test whenDeleteAccountFromUser.
      */
-//    @Test
-//    public void whenDeleteAccountFromUser() {
-//        User user = new User("Mickey", "ME451296");
-//        Account account = new Account(800, "UAH525dh");
-//        Bank bank = new Bank();
-//        bank.deleteAccountFromUser(user.getPassport(), account);
-//        assertThat(result, is(expect));
-//    }
+    @Test
+    public void whenDeleteAccountFromUser() {
+        User user = new User("Mickey", "ME451296");
+        Account account = new Account(800, "UAH525dh");
+        Bank bank = new Bank();
+        bank.addUser(user);
+        bank.addAccountToUser(user.getPassport(), account);
+        bank.deleteAccountFromUser(user.getPassport(), account);
+        assertThat(null, is(nullValue()));
+    }
     /**
      * Test whenDeleteAccountFromUser.
      */

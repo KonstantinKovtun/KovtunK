@@ -54,7 +54,10 @@ public class Bank {
                 break;
             }
         }
-
+//        return usersAccounts.keySet().stream()
+//                .filter(user -> user.getPassport().equals(passport))
+//                .findFirst()
+//                .orElse(null);
         return rsl;
     }
 
@@ -70,11 +73,15 @@ public class Bank {
 
         for (Map.Entry<User, List<Account>> entry : this.usersAccounts.entrySet()) {
             if (entry.getKey().getPassport().equals(passport)) {
-                for (Account userAccount : entry.getValue()) {
-                    if (userAccount.getRequisites().equals(account.getRequisites())) {
-                        return;
-                    }
+                if (entry.getValue().size() == 0) {
                     entry.getValue().add(account);
+                } else {
+                    for (Account userAccount : entry.getValue()) {
+                        if (userAccount.getRequisites().equals(account.getRequisites())) {
+                            return;
+                        }
+                        entry.getValue().add(account);
+                    }
                 }
             }
         }
@@ -86,7 +93,8 @@ public class Bank {
      */
     public List<Account> getUserAccounts(String passport) {
         List<Account> list = new ArrayList<Account>();
-        User user = (User) usersAccounts.entrySet()
+        User user = null;
+        usersAccounts.entrySet()
                 .stream()
                 .filter(entry -> entry.getKey().getPassport().equals(passport))
                 .findFirst()
