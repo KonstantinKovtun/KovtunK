@@ -93,17 +93,16 @@ public class Bank {
      */
     public List<Account> getUserAccounts(String passport) {
         List<Account> list = new ArrayList<Account>();
-        User user = null;
-        usersAccounts.entrySet()
+//        User user = null;
+        list = usersAccounts.entrySet()
                 .stream()
                 .filter(entry -> entry.getKey().getPassport().equals(passport))
-                .findFirst()
-                .orElse(null);
-        if (user != null) {
-            list = usersAccounts.get(user);
-        } else {
-            list = Collections.emptyList();
-        }
+                .findFirst().get().getValue();
+//        if (user != null) {
+//            list = usersAccounts.get(user);
+//        } else {
+//            list = Collections.emptyList();
+//        }
 
         return list;
     }
