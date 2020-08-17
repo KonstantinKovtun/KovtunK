@@ -28,7 +28,7 @@ public class Account {
     public String getRequisites() {
         return this.requisites;
     }
-    public Account(int value, String requisites) {
+    public Account(double value, String requisites) {
         this.value = value;
         this.requisites = requisites;
     }

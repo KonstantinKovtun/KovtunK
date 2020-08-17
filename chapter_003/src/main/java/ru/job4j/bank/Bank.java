@@ -97,13 +97,12 @@ public class Bank {
         list = usersAccounts.entrySet()
                 .stream()
                 .filter(entry -> entry.getKey().getPassport().equals(passport))
-                .findFirst().get().getValue();
+                .findFirst().get().getValue();///тут падает ошибка когда лист пустой.
 //        if (user != null) {
 //            list = usersAccounts.get(user);
 //        } else {
 //            list = Collections.emptyList();
 //        }
-
         return list;
     }
 

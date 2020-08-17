@@ -11,6 +11,7 @@ import java.util.Optional;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.core.Is.is;
 //import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 
 /**
@@ -31,6 +32,18 @@ public class UserTest {
         bank.addUser(user);
         Optional<User> opt = bank.findByPassport("ME451296");
         assertThat(opt.get(), is(user));
+    }
+    /**
+     * Test whenEnterInvalidPassport.
+     */
+    @Test
+    public void whenEnterInvalidPassport() {
+        User user = new User("Petr Arsentev", "3434");
+        Bank bank = new Bank();
+        bank.addUser(user);
+        bank.addAccountToUser(user.getPassport(), new Account(150D, "5546"));
+        assertNull(bank.getUserAccount("34", "5546"));
+//        assertThat(bank.getUserAccount("3434", "5546").getRequisites(), is("5546"));
     }
     /**
      * Test whenDeleteUser.
