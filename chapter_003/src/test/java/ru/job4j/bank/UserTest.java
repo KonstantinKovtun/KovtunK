@@ -40,10 +40,11 @@ public class UserTest {
     public void whenEnterInvalidPassport() {
         User user = new User("Petr Arsentev", "3434");
         Bank bank = new Bank();
+        Optional<Account> result;
         bank.addUser(user);
         bank.addAccountToUser(user.getPassport(), new Account(150D, "5546"));
-        assertNull(bank.getUserAccount("34", "5546"));
-//        assertThat(bank.getUserAccount("3434", "5546").getRequisites(), is("5546"));
+        result = bank.getUserAccount("34", "5546");
+        assertNull(result.get());
     }
     /**
      * Test whenDeleteUser.
@@ -64,16 +65,10 @@ public class UserTest {
         Account account = new Account(800, "UAH525dh");
         User user = new User("Tommy", "TFG888888");
         Bank bank = new Bank();
-        //Map<User, List<Account>>  map = new HashMap<User, List<Account>>();
-        //List<Account> list = new ArrayList<>();
         Account expect, result;
         result = account;
         expect = account;
-
         bank.addAccountToUser(user.getPassport(), account);
-        //list.add(account);
-        //Account result = list.get(0);
-        //map.put(user, list);
         assertThat(result, is(expect));
     }
     /**
@@ -102,6 +97,19 @@ public class UserTest {
         assertThat(result.get(count), is(expect));
     }
     /**
+     * Test whenGetUserAccount.
+     */
+    @Test
+    public void whenGetUserAccount() {
+        User user = new User("Mickey", "ME451296");
+        Bank bank = new Bank();
+        Account account = new Account(800, "UAH525dh");
+        bank.addUser(user);
+        bank.addAccountToUser(user.getPassport(), account);
+        Optional<Account> result = bank.getUserAccount(user.getPassport(), "UAH525dh");
+        assertThat(result.get(), is(account));
+    }
+    /**
      * Test whenDeleteAccountFromUser.
      */
     @Test
@@ -115,19 +123,18 @@ public class UserTest {
         assertThat(null, is(nullValue()));
     }
     /**
-     * Test whenDeleteAccountFromUser.
+     * Test whenTransferMoneyFromOneUserAccountToAnotherUserAccount.
      */
     @Test
-    public void whenTransfareMoneyFromOneUserAccountToAnotherUserAccount() {
+    public void whenTransferMoneyFromOneUserAccountToAnotherUserAccount() {
         User userSrc = new User("Erich", "NA782253");
         User userDest = new User("Paul", "GF493527");
-        Account accountSrc = new Account(10500, "UAH525dh");
-        Account accountDest = new Account(7000, "SSD111fh");
         Bank bank = new Bank();
-        int result, expect;
-        result = 17500;
-        expect = 17500;
-//        bank.transferMoney(userSrc.getPassport(), accountSrc.getRequisites(), userDest.getPassport(), accountDest.getRequisites(), accountSrc.getValue());
-        assertThat(result, is(expect));
+        bank.addUser(userSrc);
+        bank.addUser(userDest);
+        bank.addAccountToUser(userSrc.getPassport(), new Account(10500, "UAH525dh"));
+        bank.addAccountToUser(userDest.getPassport(), new Account(7000, "SSD111fh"));
+        bank.transferMoney(userSrc.getPassport(), "UAH525dh", userDest.getPassport(), "SSD111fh", 10500);
+        assertThat((bank.getUserAccount(userDest.getPassport(), "SSD111fh")).get().getValue(), is(17500D));
     }
 }

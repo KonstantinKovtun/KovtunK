@@ -9,7 +9,7 @@ import static java.util.stream.Collectors.toList;
  * Bank makes operation with users' account.
  * @author Kovtun Konstantin (kovtun.kostya@gmail.com)
  * @version $Id$
- * @since 0.1
+ * @since 18.08.2020
  */
 public class Bank {
 
@@ -93,16 +93,10 @@ public class Bank {
      */
     public List<Account> getUserAccounts(String passport) {
         List<Account> list = new ArrayList<Account>();
-//        User user = null;
         list = usersAccounts.entrySet()
                 .stream()
                 .filter(entry -> entry.getKey().getPassport().equals(passport))
-                .findFirst().get().getValue();///тут падает ошибка когда лист пустой.
-//        if (user != null) {
-//            list = usersAccounts.get(user);
-//        } else {
-//            list = Collections.emptyList();
-//        }
+                .findFirst().get().getValue(); ///тут падает ошибка когда лист пустой.
         return list;
     }
 
@@ -133,17 +127,18 @@ public class Bank {
      * @param passport, a user's passport data.
      * @param requisite, a user's requisite of account.
      */
-    public Account getUserAccount(String passport, String requisite) {
-        List<Account> userAccounts = this.getUserAccounts(passport);
+    public Optional<Account> getUserAccount(String passport, String requisite) {
+        Optional<User> user = findByPassport(passport);
 
-        if (userAccounts.size() == 0) {
-            return null;
+        if (user.isEmpty()) {
+            return Optional.empty();
         }
 
-        return userAccounts.stream()
-                .filter(userAcc -> userAcc.getRequisites().equals(requisite))
-                .findFirst()
-                .orElse(null);
+        return usersAccounts
+                .get(user.get())
+                .stream()
+                .filter(a -> a.getRequisites().equals(requisite))
+                .findFirst();
     }
 
     /**
@@ -155,13 +150,13 @@ public class Bank {
      * @param amount, amount which will be transfer.
      */
     public boolean transferMoney(String srcPassport, String srcRequisite, String destPassport, String dstRequisite, double amount) {
-        Account srcAccount = this.getUserAccount(srcPassport, srcRequisite);
+        Account srcAccount = this.getUserAccount(srcPassport, srcRequisite).get();
 
         if (srcAccount == null && srcAccount.getValue() < amount) {
             return false;
         }
 
-        Account destAccount = this.getUserAccount(destPassport, dstRequisite);
+        Account destAccount = this.getUserAccount(destPassport, dstRequisite).get();
 
         if (destAccount == null) {
             return false;
