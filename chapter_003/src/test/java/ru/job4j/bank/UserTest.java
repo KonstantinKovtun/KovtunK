@@ -4,6 +4,7 @@ import org.junit.Test;
 
 //import java.util.ArrayList;
 //import java.util.HashMap;
+import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 //import java.util.Map;
@@ -44,7 +45,7 @@ public class UserTest {
         bank.addUser(user);
         bank.addAccountToUser(user.getPassport(), new Account(150D, "5546"));
         result = bank.getUserAccount("34", "5546");
-        assertNull(result.get());
+        assertThat(result, is(Optional.empty()));
     }
     /**
      * Test whenDeleteUser.
@@ -55,7 +56,7 @@ public class UserTest {
         Bank bank = new Bank();
         bank.addUser(user);
         bank.deleteUser(user);
-        assertThat(bank.findByPassport("ME451296"), is(nullValue()));
+        assertThat(bank.findByPassport("ME451296"), is(Optional.empty()));
     }
     /**
      * Test whenAddAccountToUser.
@@ -134,7 +135,8 @@ public class UserTest {
         bank.addUser(userDest);
         bank.addAccountToUser(userSrc.getPassport(), new Account(10500, "UAH525dh"));
         bank.addAccountToUser(userDest.getPassport(), new Account(7000, "SSD111fh"));
-        bank.transferMoney(userSrc.getPassport(), "UAH525dh", userDest.getPassport(), "SSD111fh", 10500);
+        Optional<Boolean> opt = bank.transferMoney(userSrc.getPassport(), "UAH525dh", userDest.getPassport(), "SSD111fh", 10500);
+        assertThat(opt, is(Optional.of(true)));
         assertThat((bank.getUserAccount(userDest.getPassport(), "SSD111fh")).get().getValue(), is(17500D));
     }
 }

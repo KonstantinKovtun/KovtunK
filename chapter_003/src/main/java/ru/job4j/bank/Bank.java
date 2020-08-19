@@ -1,5 +1,6 @@
 package ru.job4j.bank;
 
+import javax.swing.text.html.Option;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -149,22 +150,25 @@ public class Bank {
      * @param dstRequisite, a dest user's requisite of account.
      * @param amount, amount which will be transfer.
      */
-    public boolean transferMoney(String srcPassport, String srcRequisite, String destPassport, String dstRequisite, double amount) {
-        Account srcAccount = this.getUserAccount(srcPassport, srcRequisite).get();
+    public Optional<Boolean> transferMoney(String srcPassport, String srcRequisite, String destPassport, String dstRequisite, double amount) {
+        Optional<Account> srcAccount = this.getUserAccount(srcPassport, srcRequisite);
 
-        if (srcAccount == null && srcAccount.getValue() < amount) {
-            return false;
+        if (srcAccount.isEmpty()) {
+            return Optional.empty();
+        }
+        if (srcAccount.get().getValue() < amount) {
+            return Optional.empty();
         }
 
-        Account destAccount = this.getUserAccount(destPassport, dstRequisite).get();
+        Optional<Account> destAccount = this.getUserAccount(destPassport, dstRequisite);
 
         if (destAccount == null) {
-            return false;
+            return Optional.empty();
         }
 
-        srcAccount.setValue(srcAccount.getValue() - amount);
-        destAccount.setValue(destAccount.getValue() + amount);
+        srcAccount.get().setValue(srcAccount.get().getValue() - amount);
+        destAccount.get().setValue(destAccount.get().getValue() + amount);
 
-        return true;
+        return Optional.of(true);
     }
 }
