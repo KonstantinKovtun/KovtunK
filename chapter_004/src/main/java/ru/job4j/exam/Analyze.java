@@ -26,7 +26,11 @@ public class Analyze {
     }
 
     public static List<Tuple> averageScoreByPupil(Stream<Pupil> stream) {
-        return List.of();
+        return stream
+                .map(pupil -> new Tuple(pupil.getName(), pupil.getSubjects().stream()
+                        .mapToDouble(x -> x.getScore())
+                        .average().orElse(0.)))
+                .collect(Collectors.toList());
     }
 
     public static Tuple bestStudent(Stream<Pupil> stream) {
