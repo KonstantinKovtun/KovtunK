@@ -1,6 +1,7 @@
 package ru.job4j.exam;
 
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -33,13 +34,10 @@ public class Analyze {
         return stream
                 .flatMap(pupil -> pupil.getSubjects().stream())
 //                .collect(Collectors.groupingBy(o -> o.getScore()))
-                .collect(Collectors.groupingBy(
-                        Subject::getScore,
-                        LinkedHashMap::new,
-                        Collectors.groupingBy(Subject::getScore)))
+                .collect(Collectors.averagingDouble(Subject::getScore))
                 .entrySet()
                 .stream()
-                .map(k -> (Tuple) k.getValue())
+                .map(k -> new Tuple(k.getKey(), k.getValue()))
                 .collect(Collectors.toList());
 
     }
