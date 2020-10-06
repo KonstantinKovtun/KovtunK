@@ -6,6 +6,8 @@ import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static java.util.stream.Collectors.*;
+
 public class Analyze {
     public static double averageScore(Stream<Pupil> stream) {
         return stream
@@ -27,18 +29,19 @@ public class Analyze {
                 .map(pupil -> new Tuple(pupil.getName(), pupil.getSubjects().stream()
                         .mapToDouble(x -> x.getScore())
                         .average().orElse(0.)))
-                .collect(Collectors.toList());
+                .collect(toList());
     }
 
     public static List<Tuple> averageScoreByPupil(Stream<Pupil> stream) {
         return stream
                 .flatMap(pupil -> pupil.getSubjects().stream())
 //                .collect(Collectors.groupingBy(o -> o.getScore()))
-                .collect(Collectors.averagingDouble(Subject::getScore))
+                .collect(groupingBy(
+                        Subject::getName, LinkedHashMap::new, averagingDouble(Subject::getScore)))
                 .entrySet()
                 .stream()
                 .map(k -> new Tuple(k.getKey(), k.getValue()))
-                .collect(Collectors.toList());
+                .collect(toList());
 
     }
 
