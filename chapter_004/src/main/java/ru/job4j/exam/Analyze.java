@@ -50,7 +50,9 @@ public class Analyze {
                 .map(pupil -> new Tuple(pupil.getName(), pupil.getSubjects().stream()
                         .mapToDouble(x -> x.getScore())
                         .sum()))
-                .filter((o1, o2) -> o1 > o2)
+                /*.filter((o1, o2) -> )*/
+                .max(double::compare)
+                .orElse(null)
                 .forEach(System.out::print);
         return null;
     }
