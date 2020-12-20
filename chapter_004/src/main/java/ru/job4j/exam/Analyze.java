@@ -52,9 +52,11 @@ public class Analyze {
                         .sum()))
                 /*.filter((o1, o2) -> )*/
                 .max(double::compare)
-                .orElse(null)
+                .orElse(null);
+                /*
                 .forEach(System.out::print);
-        return null;
+                */
+//        return null;
     }
 
     public static Tuple bestSubject(Stream<Pupil> stream) {
