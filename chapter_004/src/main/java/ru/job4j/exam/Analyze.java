@@ -51,7 +51,7 @@ public class Analyze {
                         .mapToDouble(x -> x.getScore())
                         .sum()))
                 /*.filter((o1, o2) -> )*/
-                .max(double::compare)
+                .max(double::compare).get()
                 .orElse(null);
                 /*
                 .forEach(System.out::print);
