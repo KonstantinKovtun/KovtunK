@@ -50,13 +50,9 @@ public class Analyze {
                 .map(pupil -> new Tuple(pupil.getName(), pupil.getSubjects().stream()
                         .mapToDouble(x -> x.getScore())
                         .sum()))
-                /*.filter((o1, o2) -> )*/
-                .max(double::compare).get()
+                .max(Comparator.comparingDouble(Subject::getScore))
                 .orElse(null);
-                /*
-                .forEach(System.out::print);
-                */
-//        return null;
+
     }
 
     public static Tuple bestSubject(Stream<Pupil> stream) {
