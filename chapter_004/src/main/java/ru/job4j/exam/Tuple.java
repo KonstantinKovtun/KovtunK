@@ -1,5 +1,6 @@
 package ru.job4j.exam;
 
+import java.util.List;
 import java.util.Objects;
 
 public class Tuple {
@@ -27,5 +28,9 @@ public class Tuple {
     @Override
     public int hashCode() {
         return Objects.hash(name, score);
+    }
+
+    public double getScore() {
+        return score;
     }
 }

@@ -63,12 +63,12 @@ public class Analyze {
                 .flatMap(pupil -> pupil.getSubjects().stream())
                 .collect(
                         Collectors.groupingBy(
-                            Subject::getName,
-                            Collectors.summingDouble(Subject::getScore)))
+                                Subject::getName,
+                                Collectors.summingDouble(Subject::getScore)))
                 .entrySet()
                 .stream()
                 .map(k -> new Tuple(k.getKey(), k.getValue()))
                 .max(Comparator.comparingDouble(Tuple::getScore))
-        return null;
+                .orElse(null);
     }
 }
